@@ -5,4 +5,8 @@ Daily Steps:
     * Sort Page Source Data 
     * [X] Exception Handling
     * [X] Upgrade - Wait until Loaded
-4. Loop Handle Data
+
+Tomorrow: 
+1. Loop Handle Data
+2. Save Data
+3. Consider Deployment
