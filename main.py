@@ -21,8 +21,13 @@ options.add_argument("--window-size=1920,1200")
 driver = webdriver.Chrome(options=options, executable_path=DRIVER_PATH)
 driver.get("https://a073-ils-web.nyc.gov/inmatelookup/pages/home/home.jsf")
 
-current_name = "Smith"
-last_name_form_input = driver.find_element_by_id("home_form:j_id_25").send_keys(current_name)
-submit = driver.find_element_by_id("home_form:search_btn").click()
-print(driver.page_source)
-driver.quit()
+current_name= "Smith"
+try:
+    # wait until current name form is present to add name and submit via click
+    WebDriverWait(browser, 20).until(EC.presence_of_element_located((By.ID, "home_form:j_id_25")))
+    driver.find_element_by_id("home_form:j_id_25").send_keys(current_name)
+    driver.find_element_by_id("home_form:search_btn").click()
+    print(driver.page_source)
+    driver.quit()
+except Exception as e: 
+    print(e)
