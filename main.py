@@ -30,10 +30,14 @@ try:
     # looks at all cols in a given row: /tr[1]/
     cols = len(driver.find_elements_by_xpath("/html/body/div[1]/div/div/form/div[3]/div/table/tbody/tr[1]/td"))
     for row in range(2, rows):
-        for col in range(1, cols+1):
-            value = driver.find_element_by_xpath(f"/html/body/div[1]/div/div/form/div[3]/div/table/tbody/tr[{row}]/td[{col}]").text
-            print(value)
+        name = name = driver.find_element_by_xpath(f"/html/body/div[1]/div/div/form/div[3]/div/table/tbody/tr[{row}]/td[1]").text
+        booking_id = driver.find_element_by_xpath(f"/html/body/div[1]/div/div/form/div[3]/div/table/tbody/tr[{row}]/td[4]").text
+        current_facility = driver.find_element_by_xpath(f"/html/body/div[1]/div/div/form/div[3]/div/table/tbody/tr[{row}]/td[5]").text
+        discharge_date = driver.find_element_by_xpath(f"/html/body/div[1]/div/div/form/div[3]/div/table/tbody/tr[{row}]/td[6]").text
+        if not discharge_date:
+            print(name, booking_id, current_facility, discharge_date)
+        else:
+            print(name, 'Released')
     driver.quit()
 except Exception as e: 
     print(e)
-
