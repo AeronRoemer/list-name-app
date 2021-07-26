@@ -3,6 +3,8 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
+import pandas as pd
+import csv
 
 # binary file needed for using browser
 DRIVER_PATH = './driver/chromedriver'
@@ -15,7 +17,7 @@ options.add_argument("--window-size=1920,1200")
 # creates webdriver
 driver = webdriver.Chrome(options=options, executable_path=DRIVER_PATH)
 driver.get("https://a073-ils-web.nyc.gov/inmatelookup/pages/home/home.jsf")
-xpaths = "/html/body/div[1]/div/div/form/div[3]/div/table/tbody/tr[2]/td[1]"
+templist = []
 current_name= "Smith"
 
 try:
@@ -35,9 +37,16 @@ try:
         current_facility = driver.find_element_by_xpath(f"/html/body/div[1]/div/div/form/div[3]/div/table/tbody/tr[{row}]/td[5]").text
         discharge_date = driver.find_element_by_xpath(f"/html/body/div[1]/div/div/form/div[3]/div/table/tbody/tr[{row}]/td[6]").text
         if not discharge_date:
-            print(name, booking_id, current_facility, discharge_date)
+            person_dict = {
+                'name': name,
+                'booking_id': booking_id,
+                'current_facility': current_facility
+            }
+            templist.append(person_dict)
         else:
-            print(name, 'Released')
+            continue
+    data_frame = pd.DataFrame(templist)
+    data_frame.to_csv('new_table.csv')
     driver.quit()
 except Exception as e: 
     print(e)
