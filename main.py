@@ -26,10 +26,9 @@ def search_names(current_line):
     driver = webdriver.Chrome(options=options, executable_path=DRIVER_PATH)
     driver.get("https://a073-ils-web.nyc.gov/inmatelookup/pages/home/home.jsf")
 
-    for r in range(0,1):
-        sleep(random()*10)
+    while len(templist) < 50:
+        sleep(random()*40)
         current_name = names_list[current_line].strip()
-        print(current_name)
         try:
             # keep track of the current line for week-to-week uses
             if current_line < 50:
@@ -50,12 +49,12 @@ def search_names(current_line):
             # cols = len(driver.find_elements_by_xpath("/html/body/div[1]/div/div/form/div[3]/div/table/tbody/tr[1]/td"))
             
             for row in range(1, rows):
+                print(row)
                 name = name = driver.find_element_by_xpath(f"/html/body/div[1]/div/div/form/div[3]/div/table/tbody/tr[{row}]/td[1]").text
                 booking_id = driver.find_element_by_xpath(f"/html/body/div[1]/div/div/form/div[3]/div/table/tbody/tr[{row}]/td[4]").text
                 current_facility = driver.find_element_by_xpath(f"/html/body/div[1]/div/div/form/div[3]/div/table/tbody/tr[{row}]/td[5]").text
                 discharge_date = driver.find_element_by_xpath(f"/html/body/div[1]/div/div/form/div[3]/div/table/tbody/tr[{row}]/td[6]").text
-                printer =  driver.find_element_by_xpath(f"/html/body/div[1]/div/div/form/div[3]/div/table/tbody/tr[2]/td[1]").text
-                print(printer)
+                working_second_row =  driver.find_element_by_xpath(f"/html/body/div[1]/div/div/form/div[3]/div/table/tbody/tr[2]/td[1]").text
                 # if not discharged & list is less than 50 add to list
                 if not discharge_date:
                     if len(templist) < 50:
@@ -65,18 +64,20 @@ def search_names(current_line):
                         'current_facility': current_facility
                     }
                         templist.append(person_dict)
-                        print(person_dict)
+                        print(person_dict, 'row: ', row)
                     else:
                         break
                 else:
                     continue
                 # click back to main element
-                driver.find_element_by_xpath("//*[@id='home_form:j_id_35']").click()  
+            driver.find_element_by_xpath("//*[@id='home_form:j_id_35']").click()  
         except Exception as e: 
             print('error: ', e)
+    if len(templist) > 0:
         # temp export of data to CSV for Printing etc 
         data_frame = pd.DataFrame(templist)
         data_frame.to_csv('new_table.csv')
-        driver.quit()
+    
+    driver.quit()
 
 search_names(current_line)
