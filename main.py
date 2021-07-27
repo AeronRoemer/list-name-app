@@ -17,29 +17,27 @@ options = Options()
 options.headless = True
 options.add_argument("--window-size=1920,1200")
 
-# creates webdriver
-driver = webdriver.Chrome(options=options, executable_path=DRIVER_PATH)
-driver.get("https://a073-ils-web.nyc.gov/inmatelookup/pages/home/home.jsf")
 templist = []
 current_line = 0
 names_list = open('top_100.txt').readlines()
 
-
 def search_names(current_line):
+    # creates webdriver
+    driver = webdriver.Chrome(options=options, executable_path=DRIVER_PATH)
+    driver.get("https://a073-ils-web.nyc.gov/inmatelookup/pages/home/home.jsf")
+
     for r in range(0,1):
         sleep(random()*10)
-        current_name = names_list[current_line]
+        current_name = names_list[current_line].strip()
         print(current_name)
         try:
             # keep track of the current line for week-to-week uses
             if current_line < 50:
                 current_line =+1
-                print('added', current_line)
+                print('added', current_line, names_list[current_line].strip())
             else:
                 print('reset')
                 current_line = 0
-
-            print(driver.page_source)
             # wait until current name form is present to add name and submit via click
             WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, "//*[@id='home_form:search_btn']")))
             # adds current name to last name search form area and submits search, driver holds results
@@ -51,11 +49,13 @@ def search_names(current_line):
             # looks at all cols in a given row: /tr[1]/
             # cols = len(driver.find_elements_by_xpath("/html/body/div[1]/div/div/form/div[3]/div/table/tbody/tr[1]/td"))
             
-            for row in range(2, 4):
+            for row in range(1, rows):
                 name = name = driver.find_element_by_xpath(f"/html/body/div[1]/div/div/form/div[3]/div/table/tbody/tr[{row}]/td[1]").text
                 booking_id = driver.find_element_by_xpath(f"/html/body/div[1]/div/div/form/div[3]/div/table/tbody/tr[{row}]/td[4]").text
                 current_facility = driver.find_element_by_xpath(f"/html/body/div[1]/div/div/form/div[3]/div/table/tbody/tr[{row}]/td[5]").text
                 discharge_date = driver.find_element_by_xpath(f"/html/body/div[1]/div/div/form/div[3]/div/table/tbody/tr[{row}]/td[6]").text
+                printer =  driver.find_element_by_xpath(f"/html/body/div[1]/div/div/form/div[3]/div/table/tbody/tr[2]/td[1]").text
+                print(printer)
                 # if not discharged & list is less than 50 add to list
                 if not discharge_date:
                     if len(templist) < 50:
@@ -74,6 +74,7 @@ def search_names(current_line):
                 driver.find_element_by_xpath("//*[@id='home_form:j_id_35']").click()  
         except Exception as e: 
             print('error: ', e)
+        # temp export of data to CSV for Printing etc 
         data_frame = pd.DataFrame(templist)
         data_frame.to_csv('new_table.csv')
         driver.quit()
