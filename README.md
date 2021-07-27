@@ -12,8 +12,9 @@ Tomorrow:
     [x] API (No Good)
     [X] limit list to 50 and track last searched name
 2. [X] Save Data
-3. Consider Deployment
+3. [X] Consider Deployment
 
 Next:
 1. Consider DB
 2. Handle Already Contacted Names
+3. Build Back End & Start Deploy

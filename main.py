@@ -7,6 +7,7 @@ import requests
 import pandas as pd
 import csv
 from time import sleep
+from random import random
 
 # binary file needed for using browser
 DRIVER_PATH = './driver/chromedriver'
@@ -20,24 +21,25 @@ options.add_argument("--window-size=1920,1200")
 driver = webdriver.Chrome(options=options, executable_path=DRIVER_PATH)
 driver.get("https://a073-ils-web.nyc.gov/inmatelookup/pages/home/home.jsf")
 templist = []
-current_line = 1
+current_line = 0
 names_list = open('top_100.txt').readlines()
 
 
 def search_names(current_line):
-    for r in range(0,3):
-        sleep(5)
-        print('ran', current_line)
+    for r in range(0,1):
+        sleep(random()*10)
         current_name = names_list[current_line]
         print(current_name)
-        # keep track of the current line for week-to-week uses
-        if current_line < 50:
-            print('added')
-            current_line =+1
-        else:
-            print('reset')
-            current_line = 1
         try:
+            # keep track of the current line for week-to-week uses
+            if current_line < 50:
+                current_line =+1
+                print('added', current_line)
+            else:
+                print('reset')
+                current_line = 0
+
+            print(driver.page_source)
             # wait until current name form is present to add name and submit via click
             WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, "//*[@id='home_form:search_btn']")))
             # adds current name to last name search form area and submits search, driver holds results
@@ -48,6 +50,7 @@ def search_names(current_line):
             rows = 1 +len(driver.find_elements_by_xpath("/html/body/div[1]/div/div/form/div[3]/div/table/tbody/tr"))
             # looks at all cols in a given row: /tr[1]/
             # cols = len(driver.find_elements_by_xpath("/html/body/div[1]/div/div/form/div[3]/div/table/tbody/tr[1]/td"))
+            
             for row in range(2, 4):
                 name = name = driver.find_element_by_xpath(f"/html/body/div[1]/div/div/form/div[3]/div/table/tbody/tr[{row}]/td[1]").text
                 booking_id = driver.find_element_by_xpath(f"/html/body/div[1]/div/div/form/div[3]/div/table/tbody/tr[{row}]/td[4]").text
@@ -67,10 +70,12 @@ def search_names(current_line):
                         break
                 else:
                     continue
-            data_frame = pd.DataFrame(templist)
-            data_frame.to_csv('new_table.csv')
-            driver.quit()
+                # click back to main element
+                driver.find_element_by_xpath("//*[@id='home_form:j_id_35']").click()  
         except Exception as e: 
-            print(e)
+            print('error: ', e)
+        data_frame = pd.DataFrame(templist)
+        data_frame.to_csv('new_table.csv')
+        driver.quit()
 
 search_names(current_line)
