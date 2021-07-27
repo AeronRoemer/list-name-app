@@ -8,8 +8,12 @@ Daily Steps:
 
 Tomorrow: 
 1. Loop Handle Data
-    a. conditional - new people, other sorting
-    b. API?
-    c. limit list to 50 and track last searched name
+    * conditional - new people, other sorting
+    [x] API (No Good)
+    [X] limit list to 50 and track last searched name
 2. [X] Save Data
 3. Consider Deployment
+
+Next:
+1. Consider DB
+2. Handle Already Contacted Names
