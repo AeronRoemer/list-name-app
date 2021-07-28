@@ -19,22 +19,20 @@ options.add_argument("--window-size=1920,1200")
 # a temporary list of names/IDs
 templist = []
 # keep track of the current line for week-to-week uses
-names_list = open('top_100.txt').readlines()
-
-def search_names(templist):
-    current_line = 3
-
+current_line = 0
+names_list = open('already_used_names.txt').readlines()
+# FROM LINE 37
+def search_names(templist, current_line):
     # creates webdriver
     driver = webdriver.Chrome(options=options, executable_path=DRIVER_PATH)
     driver.get("https://a073-ils-web.nyc.gov/inmatelookup/pages/home/home.jsf")
 
-    while len(templist) < 50:
+    for i in range(0, len(names_list)-1):
         current_name = names_list[current_line].strip()
-        if current_line < 50:
+        if current_line < 99:
             current_line +=1
             print('added', current_line, names_list[current_line].strip())
         else:
-            print('reset')
             current_line = 0
         try:
             # wait until current name form is present to add name and submit via click
@@ -55,7 +53,7 @@ def search_names(templist):
                 
                 # if not discharged & list is less than 50 add to list
                 if not discharge_date:
-                    if len(templist) < 50:
+                    if len(templist) < 2500:
                         person_dict = {
                         'name': name,
                         'booking_id': booking_id,
@@ -70,6 +68,7 @@ def search_names(templist):
                 # click back to main element
             driver.find_element_by_xpath("//*[@id='home_form:j_id_35']").click()  
         except Exception as e: 
+            print(driver.page_source)
             print('error: ', e)
     if len(templist) > 0:
         # temp export of data to CSV for Printing etc 
@@ -77,5 +76,6 @@ def search_names(templist):
         data_frame.to_csv('new_table.csv')
     templist = []
     driver.quit()
+    return templist, current_line
 
-search_names(templist)
+search_names(templist, current_line)
