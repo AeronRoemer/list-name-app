@@ -30,6 +30,9 @@ Latest commit 51a1681 2 minutes ago
 History
 1 contributor
 129 lines (105 sloc) 1.76 KB
+# Driver for Selenium
+/driver
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
