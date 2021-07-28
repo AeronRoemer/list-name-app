@@ -7,10 +7,11 @@ Today:
 3. Handle Already Contacted Names
     [X] Get List
     [X] Sort Top 100
-    * Add existing names to DB]
+    * Add existing names to DB
 4. [X] Connect DB
 
 Next:
+* COntinue Tutorial
 * Consider Output Format vs. Document Storage CSV, SQL Tables
 * Consider Deployment
 * Consider Views

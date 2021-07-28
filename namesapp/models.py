@@ -8,7 +8,7 @@ class NYCAlready(models.Model):
     location = models.CharField(max_length=15)
 
     def __str__(self):
-        return self.name, self.book_and_case, self.location
+        return self.book_and_case
 
 # Create your models here.
 class NYCCurrent(models.Model):

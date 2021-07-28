@@ -19,15 +19,15 @@ options.add_argument("--window-size=1920,1200")
 # a temporary list of names/IDs
 templist = []
 # keep track of the current line for week-to-week uses
-current_line = 0
-names_list = open('already_used_names.txt').readlines()
-# FROM LINE 37
+current_line = 37
+names_list = open('top_100.txt').readlines()
+
 def search_names(templist, current_line):
     # creates webdriver
     driver = webdriver.Chrome(options=options, executable_path=DRIVER_PATH)
     driver.get("https://a073-ils-web.nyc.gov/inmatelookup/pages/home/home.jsf")
 
-    for i in range(0, len(names_list)-1):
+    while len(templist) < 50:
         current_name = names_list[current_line].strip()
         if current_line < 99:
             current_line +=1
@@ -46,7 +46,7 @@ def search_names(templist, current_line):
             rows = 1 +len(driver.find_elements_by_xpath("/html/body/div[1]/div/div/form/div[3]/div/table/tbody/tr"))
             # looks at all cols in a given row: /tr[1]/
             for row in range(1, rows):
-                name = name = driver.find_element_by_xpath(f"/html/body/div[1]/div/div/form/div[3]/div/table/tbody/tr[{row}]/td[1]").text
+                name = driver.find_element_by_xpath(f"/html/body/div[1]/div/div/form/div[3]/div/table/tbody/tr[{row}]/td[1]").text
                 booking_id = driver.find_element_by_xpath(f"/html/body/div[1]/div/div/form/div[3]/div/table/tbody/tr[{row}]/td[4]").text
                 current_facility = driver.find_element_by_xpath(f"/html/body/div[1]/div/div/form/div[3]/div/table/tbody/tr[{row}]/td[5]").text
                 discharge_date = driver.find_element_by_xpath(f"/html/body/div[1]/div/div/form/div[3]/div/table/tbody/tr[{row}]/td[6]").text
@@ -79,3 +79,4 @@ def search_names(templist, current_line):
     return templist, current_line
 
 search_names(templist, current_line)
+print(current_line)
