@@ -1,7 +1,7 @@
 {% if people %}
     <ul>
     {% for person in people %}
-        <li>{{ person.name }}, {{ person.book_and_case }}</li>
+        <li>{{ person.name }}, {{ person.book_and_case }}, {{ person.location }}</li>
     {% endfor %}
     </ul>
 {% else %}

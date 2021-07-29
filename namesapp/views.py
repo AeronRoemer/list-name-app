@@ -12,4 +12,7 @@ def NYCRecentNames(request):
     people = get_list_or_404(NYCAlready)
     context = { 'people': people }
     return render(request, 'namesapp/nyc-recent-names.html', context)
-    
+
+def submit(request):
+    new_person = NYCAlready
+    return True

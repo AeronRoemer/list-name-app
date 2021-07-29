@@ -19,7 +19,7 @@ options.add_argument("--window-size=1920,1200")
 # a temporary list of names/IDs
 templist = []
 # keep track of the current line for week-to-week uses
-current_line = 37
+current_line = 40
 names_list = open('top_100.txt').readlines()
 
 def search_names(templist, current_line):
@@ -53,7 +53,7 @@ def search_names(templist, current_line):
                 
                 # if not discharged & list is less than 50 add to list
                 if not discharge_date:
-                    if len(templist) < 2500:
+                    if len(templist) < 50:
                         person_dict = {
                         'name': name,
                         'booking_id': booking_id,
