@@ -1,8 +1,7 @@
 Today: 
 1. [X] Page 3 of Tutorial
-2. View with Input
-3. Page 4 of Tutorial
-4. [x] Add old names to DB. Best way ? Create a command:
+2. [X] View with Input
+3. [x] Add old names to DB. Best way ? Create a command:
     * https://adityakedawat.medium.com/importing-csv-file-into-django-models-using-django-management-command-716eda305e61
 
 Next:
@@ -12,6 +11,8 @@ Next:
 * Consider Deployment
 * Handle Data: sorting, storage
 * Consider 'Loading' wait screen for name retrieval. 
+* Consider Front End
+* Consider Oauth
 
 
 ### Deployment Concerns

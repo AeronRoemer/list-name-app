@@ -14,5 +14,6 @@ def NYCRecentNames(request):
     return render(request, 'namesapp/nyc-recent-names.html', context)
 
 def submit(request):
-    new_person = NYCAlready
-    return True
+    number = request.POST['number']
+    context = { 'number': number }
+    return render(request, 'namesapp/submit.html', context)
