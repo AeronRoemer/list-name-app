@@ -1,9 +1,12 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 from .models import NYCAlready, NYCCurrent
 
 # Create your views here.
 def index(request):
+    return render(request, 'namesapp/index.html')
+    
+def NYCRecentNames(request):
     people = NYCAlready.objects.all()
-    output = ', '.join(p.name for p in people)
-    return HttpResponse(output)
+    context = { 'people': people }
+    return render(request, 'namesapp/nyc-recent-names.html', context)
+    

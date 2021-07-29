@@ -1,21 +1,13 @@
 Today: 
-1. [X] Investigate Connection Methods
-    [X] Change Config to PSQL Defaults
-2. [X] Create PSQL DB & Model
-    * To see SQL used in migration in shell type: python manage.py sqlmigrate namesapp 0001
-    * To check for problems: python manage.py check
-3. Handle Already Contacted Names
-    [X] Get List
-    [X] Sort Top 100
-    * Add existing names to DB
-4. [X] Connect DB
+1. Page 4 of Tutorial
+2. View with Input
 
 Next:
-* COntinue Tutorial
+* Continue Tutorial
 * Consider Output Format vs. Document Storage CSV, SQL Tables
 * Consider Deployment
-* Consider Views
 * Handle Data: sorting, storage
+* Add existing names to DB
 
 
 ### Deployment Concerns
@@ -36,11 +28,22 @@ Day 1:
 Day 2:
 1. Loop Handle Data
     * conditional - new people, other sorting
-    [x] API (No Good)
-    [X] limit list to 50 and track last searched name
-    [X] Handle Error (Related to Looping?)
+    * [x] API (No Good)
+    * [X] limit list to 50 and track last searched name
+    * [X] Handle Error (Related to Looping?)
 2. [X] Consider Deployment
 3. [X] Django Basics (installed project and app, loading one page)
 4. [X] Consider DB
 5. [x] .env file (problem was it was different for Django)
 
+Day 3: 
+1. [X] Investigate Connection Methods
+    * [X] Change Config to PSQL Defaults
+2. [X] Create PSQL DB & Model
+    * To see SQL used in migration in shell type: python manage.py sqlmigrate namesapp 0001
+    * To check for problems: python manage.py check
+3. Handle Already Contacted Names
+    * [X] Get List
+    * [X] Sort Top 100
+4. [X] Connect DB
+    * [x] Show data in view

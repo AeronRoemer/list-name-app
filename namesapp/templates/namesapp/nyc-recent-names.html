@@ -1,0 +1,9 @@
+{% if people %}
+    <ul>
+    {% for person in people %}
+        <li>{{ person.name }}, {{ person.book_and_case }}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>There's been an error.</p>
+{% endif %}
