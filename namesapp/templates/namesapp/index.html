@@ -1,1 +1,15 @@
 <h1>Hello from the template</h1>
+<form action="{% url 'namesapp:nyc-recent-names' %}" method="post">
+    {% csrf_token %}
+    <fieldset>
+        <legend><h2>New Person Submission Form</h2></legend>
+        {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+            <input type="text" name="name" id="name" value="name" placeholder="name" />
+            <label for="name">Enter a Name</label><br>
+            <input type="text" name="book_and_case" id="book_and_case" value="book_and_case" placeholder="book_and_case" />
+            <label for="book_and_case">Enter a book_and_case</label><br>
+            <input type="text" name="location" id="location" value="location" placeholder="location" />
+            <label for="location">Enter a location</label><br>
+    </fieldset>
+    <input type="submit" value="Vote">
+    </form>

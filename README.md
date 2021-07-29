@@ -1,6 +1,7 @@
 Today: 
-1. Page 4 of Tutorial
+1. [X] Page 3 of Tutorial
 2. View with Input
+3. Page 4 of Tutorial
 
 Next:
 * Continue Tutorial
@@ -8,6 +9,7 @@ Next:
 * Consider Deployment
 * Handle Data: sorting, storage
 * Add existing names to DB
+* Consider 'Loading' wait screen for name retrieval. 
 
 
 ### Deployment Concerns
