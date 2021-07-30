@@ -6,8 +6,7 @@ Today:
 4. [x] Investigate Async for main.py
 5. [x] Static Files Tutorial
 6. [x] Django Page that adds One Person
-7. Test Main.py in Views
-    * Convert to Class
+7. [x] Test Main.py in Views
 
 Next:
 

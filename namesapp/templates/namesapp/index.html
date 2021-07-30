@@ -10,7 +10,7 @@
             <label for="book_and_case">Enter a book_and_case</label><br>
             <input type="text" name="location" id="location" value="location" placeholder="location" />
             <label for="location">Enter a location</label><br>
-            
+
             <h4>How many names do you want?</h4>    
             <select name="number" id="number">
                 <option value="25">25</option>
@@ -20,6 +20,11 @@
             </select>
     <input type="submit" value="Submit">
     </form>
+    <ul>    
+        {% for person in people %}
+        <li>{{ person.name }}, {{ person.book_and_case }}, {{ person.location }}</li>
+    {% endfor %}
+    </ul>
 
     {% load static %}
 

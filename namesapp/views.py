@@ -56,8 +56,8 @@ def search_names(data):
             # looks at all cols in a given row: /tr[1]/
             for row in range(1, rows):
                 name = driver.find_element_by_xpath(f"/html/body/div[1]/div/div/form/div[3]/div/table/tbody/tr[{row}]/td[1]").text
-                booking_id = driver.find_element_by_xpath(f"/html/body/div[1]/div/div/form/div[3]/div/table/tbody/tr[{row}]/td[4]").text
-                current_facility = driver.find_element_by_xpath(f"/html/body/div[1]/div/div/form/div[3]/div/table/tbody/tr[{row}]/td[5]").text
+                book_and_case = driver.find_element_by_xpath(f"/html/body/div[1]/div/div/form/div[3]/div/table/tbody/tr[{row}]/td[4]").text
+                location = driver.find_element_by_xpath(f"/html/body/div[1]/div/div/form/div[3]/div/table/tbody/tr[{row}]/td[5]").text
                 discharge_date = driver.find_element_by_xpath(f"/html/body/div[1]/div/div/form/div[3]/div/table/tbody/tr[{row}]/td[6]").text
                 
                 # if not discharged & list is less than 50 add to list
@@ -65,31 +65,27 @@ def search_names(data):
                     if not discharge_date:
                         person_dict = {
                         'name': name,
-                        'booking_id': booking_id,
-                        'current_facility': current_facility
+                        'book_and_case': book_and_case,
+                        'location': location
                     }
                         templist.append(person_dict)
                     else:
-                        # when the list is 50 or above, break
+                        # skip if there's a discharge date
                         print('continued')
                         continue
-                else:
+                elif len(templist) >= 5:
                     # exit condition for when the list is over 50 partway through a name
                     # if the list has data, return it. 
-                    if len(templist) > 0:
-                        print('final condition')
-                        # temp export of data to CSV for Printing etc 
-                        data_frame = pd.DataFrame(templist)
-                        data_frame.to_csv('./namesapp/nyc-data/new_table.csv')
-                        
-                    else:
-                        print('No Names Returned, an error occured')
-                    return True
+                    
+                    # temp export of data to CSV for Printing etc 
+                    data_frame = pd.DataFrame(templist)
+                    data_frame.to_csv('./namesapp/nyc-data/new_table.csv')
+                    return templist
                 # click back to main element
             driver.find_element_by_xpath("//*[@id='home_form:j_id_35']").click()  
         except Exception as e: 
             print(driver.page_source)
-            print('error: ', e)
+            return {'error:': e }
 
         # increment name index if the loop finishes with 50 or less names
         print('runs each loop')
@@ -103,16 +99,18 @@ def search_names(data):
         data['current_line'] = current_line
         json.dump(data, json_file)
     driver.quit()
-    return True
+    return templist
 
 # ----------------------
 # ----------------------
 # ----------------------
 # ----------------------
 # Create your views here.
+
 def index(request):
-    search_names(data)
-    return render(request, 'namesapp/index.html')
+    templist = search_names(data)
+    context = { 'people': templist }
+    return render(request, 'namesapp/index.html', context)
     
 def NYCAllNames(request):
     people = get_list_or_404(NYCAlready)
