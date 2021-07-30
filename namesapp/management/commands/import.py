@@ -20,7 +20,7 @@ class Command(BaseCommand):
 
 
         #Code to load the data into database
-        for row in DictReader(open('old-names.csv')):
+        for row in DictReader(open('old-names-full-list.csv')):
             print(row)
             person=NYCAlready.objects.get_or_create(name=row['name'], book_and_case=row['booking_id'], location=row['current_facility'])  
             print(person)

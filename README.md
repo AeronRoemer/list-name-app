@@ -1,16 +1,12 @@
 Today: 
-1. [x] Tests Tutorial 
-2. [x] 'with open'
-3. [x] Keep track of current line (JSON)
-    * Bug: If there's over 50, it won't advance. Will be fixed when DB in connected and checks names in list against names in DB
-4. [x] Investigate Async for main.py
-5. [x] Static Files Tutorial
-6. [x] Django Page that adds One Person
-7. [x] Test Main.py in Views
-
+1. Handle Data
+    * Check new names against DB names
+    * Send to DB
+2. [x] book_and_case number as pk
 Next:
 
-* Handle Data: sorting, storage
+
+* Bug: If there's over 50, it won't advance. Will be fixed when DB is connected and checks names in list against names in DB
 * Test deploy after minimally-functional app is built out
 * Consider Output Format vs. Document Storage CSV, SQL Tables
     * Push Names to Table, Store Other data Temporarily. 
@@ -67,3 +63,13 @@ Day 4:
 3. [x] Add old names to DB. Best way ? Create a command:
     * https://adityakedawat.medium.com/importing-csv-file-into-django-models-using-django-management-command-716eda305e61
 4. [X] Page 4 of Tutorial
+
+Day 5: 
+1. [x] Tests Tutorial 
+2. [x] 'with open'
+3. [x] Keep track of current line (JSON)
+    * Bug: If there's over 50, it won't advance. Will be fixed when DB is connected and checks names in list against names in DB
+4. [x] Investigate Async for main.py
+5. [x] Static Files Tutorial
+6. [x] Django Page that adds One Person
+7. [x] Test Main.py in Views

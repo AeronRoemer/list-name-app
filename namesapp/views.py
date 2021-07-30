@@ -33,6 +33,16 @@ with open("./namesapp/nyc-data/nyc-current-script-data.txt") as j:
 with open('./namesapp/nyc-data/top_100.txt') as f:
     names_list = f.readlines()
 
+
+def add_names(templist):
+    for person in templist:
+        try:
+            NYCAlready.objects.get(pk=person['book_and_case'])
+        except NYCAlready.DoesNotExist:
+            new_person = NYCAlready(pk=person['book_and_case'], name=person['name'], location=person['location'])
+            new_person.save()
+    
+
 def search_names(data):
     templist = []
     current_line = data['current_line']
@@ -65,7 +75,7 @@ def search_names(data):
                     if not discharge_date:
                         person_dict = {
                         'name': name,
-                        'book_and_case': book_and_case,
+                        'book_and_case': int(book_and_case),
                         'location': location
                     }
                         templist.append(person_dict)
@@ -80,6 +90,7 @@ def search_names(data):
                     # temp export of data to CSV for Printing etc 
                     data_frame = pd.DataFrame(templist)
                     data_frame.to_csv('./namesapp/nyc-data/new_table.csv')
+                    add_names(templist)
                     return templist
                 # click back to main element
             driver.find_element_by_xpath("//*[@id='home_form:j_id_35']").click()  
@@ -99,6 +110,7 @@ def search_names(data):
         data['current_line'] = current_line
         json.dump(data, json_file)
     driver.quit()
+    add_names(templist)
     return templist
 
 # ----------------------
