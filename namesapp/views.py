@@ -8,10 +8,10 @@ from .models import NYCAlready, NYCCurrent
 def index(request):
     return render(request, 'namesapp/index.html')
     
-def NYCRecentNames(request):
+def NYCAllNames(request):
     people = get_list_or_404(NYCAlready)
     context = { 'people': people }
-    return render(request, 'namesapp/nyc-recent-names.html', context)
+    return render(request, 'namesapp/nyc-all-names.html', context)
 
 def submit(request):
     number = request.POST['number']

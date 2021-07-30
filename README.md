@@ -1,17 +1,19 @@
 Today: 
-1. [X] Page 3 of Tutorial
-2. [X] View with Input
-3. [x] Add old names to DB. Best way ? Create a command:
-    * https://adityakedawat.medium.com/importing-csv-file-into-django-models-using-django-management-command-716eda305e61
+1. Tests Tutorial 
+2. [x] 'with open'
+3. [x] Keep track of current line (JSON)
+    * Bug: If there's over 50, it won't advance. Will be fixed when DB in connected and checks names in list against names in DB
+4. Investigate Async for main.py
 
 Next:
-* Continue Tutorial
+* Consider Testing
 * Consider Output Format vs. Document Storage CSV, SQL Tables
     * Push Names to Table, Store Other data Temporarily. 
 * Consider Deployment
 * Handle Data: sorting, storage
 * Consider 'Loading' wait screen for name retrieval. 
 * Consider Front End
+    * Headers/Footers
 * Consider Oauth
 
 
@@ -52,3 +54,10 @@ Day 3:
     * [X] Sort Top 100
 4. [X] Connect DB
     * [x] Show data in view
+
+Day 4: 
+1. [X] Page 3 of Tutorial
+2. [X] View with Input
+3. [x] Add old names to DB. Best way ? Create a command:
+    * https://adityakedawat.medium.com/importing-csv-file-into-django-models-using-django-management-command-716eda305e61
+4. [X] Page 4 of Tutorial
