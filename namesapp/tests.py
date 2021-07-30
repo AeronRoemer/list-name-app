@@ -1,5 +1,6 @@
 from django.test import TestCase
 from .models import NYCAlready
+
 # Create your tests here.
 class NYCModelTests(TestCase):
     def setUp(self):

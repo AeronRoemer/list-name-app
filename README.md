@@ -1,26 +1,33 @@
 Today: 
-1. Tests Tutorial 
+1. [x] Tests Tutorial 
 2. [x] 'with open'
 3. [x] Keep track of current line (JSON)
     * Bug: If there's over 50, it won't advance. Will be fixed when DB in connected and checks names in list against names in DB
-4. Investigate Async for main.py
+4. [x] Investigate Async for main.py
+5. [x] Static Files Tutorial
+6. [x] Django Page that adds One Person
+7. Test Main.py in Views
+    * Convert to Class
 
 Next:
-* Consider Testing
+
+* Handle Data: sorting, storage
+* Test deploy after minimally-functional app is built out
 * Consider Output Format vs. Document Storage CSV, SQL Tables
     * Push Names to Table, Store Other data Temporarily. 
-* Consider Deployment
-* Handle Data: sorting, storage
 * Consider 'Loading' wait screen for name retrieval. 
 * Consider Front End
     * Headers/Footers
 * Consider Oauth
+* Consider Error Handling for User
 
 
 ### Deployment Concerns
 * Web Browser (Install & Install Binary for Selenium)
 * Is the Git repo Okay cause I didn't already make the driver a binary
 * Install PSQL and create DB 
+* (FOR ASYNC) from root: uvicorn project.asgi:application 
+    * or with flag --reload 
 
 ### Prior: 
 Day 1:
