@@ -1,3 +1,5 @@
+{% extends "namesapp/base.html" %} 
+{% block content %} 
 {% if people %}
     <ol>
     {% for person in people %}
@@ -7,3 +9,4 @@
 {% else %}
     <p>There's been an error.</p>
 {% endif %}
+{% endblock %}

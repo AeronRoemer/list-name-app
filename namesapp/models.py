@@ -13,7 +13,7 @@ class NYCAlready(models.Model):
 # Create your models here.
 class NYCCurrent(models.Model):
     name = models.CharField(max_length=250)
-    book_and_case = models.CharField(max_length=40)
+    book_and_case = models.CharField(max_length=40, primary_key=True)
     location = models.CharField(max_length=15)
 
     def __str__(self):

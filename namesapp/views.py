@@ -1,7 +1,7 @@
 from django.shortcuts import get_list_or_404, render
 from django.http import HttpResponse, HttpResponseRedirect
 
-from .models import NYCAlready
+from .models import NYCAlready, NYCCurrent
 
 
 ## SELENIUM STUFF

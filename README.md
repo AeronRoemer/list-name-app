@@ -1,7 +1,9 @@
 Today: 
 1. [x] Pass list data to next view
-2. Create header for view
+2. [x] Create header for view
 3. Create loading functionality for view
+4. Beautify Pages
+5. Investigate JS/React/Etc
 
 
 Next:
@@ -13,7 +15,7 @@ Next:
 * Consider 'Loading' wait screen for name retrieval. 
 * Consider Auth
 * Consider Error Handling for User
-
+* Date Added Functionality/ 'Most recent'
 
 ### Deployment Concerns
 * Web Browser (Install & Install Binary for Selenium)
