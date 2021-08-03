@@ -10,6 +10,7 @@ from random import random
 
 # binary file needed for using browser
 DRIVER_PATH = './driver/chromedriver'
+# for deployment: /usr/lib/chromium-browser/chromedriver
 
 # allows headless option where a Chrome window won't have to open
 options = Options()

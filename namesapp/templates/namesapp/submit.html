@@ -1,6 +1,14 @@
 {% if number %}
     <h1>{{ number }} </h1>
-    <p>{{ new_person }}</p>
+{% else %}
+    <p>There's been an error.</p>
+{% endif %}
+{% if people %}
+    <ol>
+        {% for person in people %}
+        <li>{{ person.name }}, {{ person.book_and_case }}, {{ person.location }}</li>
+        {% endfor %}
+    </ol>
 {% else %}
     <p>There's been an error.</p>
 {% endif %}

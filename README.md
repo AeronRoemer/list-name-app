@@ -1,26 +1,22 @@
 Today: 
-1. Handle Data
-    * Check new names against DB names
-    * Send to DB
-2. [x] book_and_case number as pk
+1. [x] Pass list data to next view
+2. Create header for view
+3. Create loading functionality for view
+
+
 Next:
 
-
-* Bug: If there's over 50, it won't advance. Will be fixed when DB is connected and checks names in list against names in DB
-* Test deploy after minimally-functional app is built out
-* Consider Output Format vs. Document Storage CSV, SQL Tables
-    * Push Names to Table, Store Other data Temporarily. 
-* Consider 'Loading' wait screen for name retrieval. 
 * Consider Front End
     * Headers/Footers
-* Consider Oauth
+    * Views 
+    * Format List 
+* Consider 'Loading' wait screen for name retrieval. 
+* Consider Auth
 * Consider Error Handling for User
 
 
 ### Deployment Concerns
 * Web Browser (Install & Install Binary for Selenium)
-* Is the Git repo Okay cause I didn't already make the driver a binary
-* Install PSQL and create DB 
 * (FOR ASYNC) from root: uvicorn project.asgi:application 
     * or with flag --reload 
 
@@ -73,3 +69,17 @@ Day 5:
 5. [x] Static Files Tutorial
 6. [x] Django Page that adds One Person
 7. [x] Test Main.py in Views
+
+Day 6:
+1. [x] Handle Data
+    * [x] Check new names against DB names
+    * [x] Send to DB
+2. [x] book_and_case number as pk
+3. [x] Get 50, Check & Display
+4. [x] Read about deployment
+5. [x] Setup env on VPS - installed and server running but didn't configure NginX
+    * [x] pull from github
+    * [x] postgres + DBs
+    * [x] migrations
+    * [x] install dependencies
+        * [x] pykerberos error

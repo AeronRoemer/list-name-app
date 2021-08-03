@@ -29,31 +29,35 @@ options.add_argument("--window-size=1920,1200")
 # keep track of the current line for week-to-week uses
 with open("./namesapp/nyc-data/nyc-current-script-data.txt") as j:
     data = json.load(j)
+    print(data['current_line'])
 
 with open('./namesapp/nyc-data/top_100.txt') as f:
     names_list = f.readlines()
 
 
-def add_names(templist):
-    for person in templist:
-        try:
-            NYCAlready.objects.get(pk=person['book_and_case'])
-        except NYCAlready.DoesNotExist:
-            new_person = NYCAlready(pk=person['book_and_case'], name=person['name'], location=person['location'])
-            new_person.save()
+def check_and_add_name(person, templist):
+    if NYCAlready.objects.filter(pk=person['book_and_case']).exists():
+        print('found', person)
+    else:
+        new_person = NYCAlready(pk=person['book_and_case'], name=person['name'], location=person['location'])
+        new_person.save()
+        templist.append(person)
+        print('saved')
+    return templist
     
 
-def search_names(data):
+def search_names(data, input_number=50):
+    number = int(input_number)
     templist = []
     current_line = data['current_line']
     # creates webdriver
     driver = webdriver.Chrome(options=options, executable_path=DRIVER_PATH)
     driver.get("https://a073-ils-web.nyc.gov/inmatelookup/pages/home/home.jsf")
 
-    while len(templist) < 5:
+    while len(templist) < number:
         current_name = names_list[current_line].strip()
         try:
-            print('finding')
+            print('finding', current_name)
             # wait until current name form is present to add name and submit via click
             sleep(15+(random()*30))
             WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, "//*[@id='home_form:search_btn']")))
@@ -71,31 +75,31 @@ def search_names(data):
                 discharge_date = driver.find_element_by_xpath(f"/html/body/div[1]/div/div/form/div[3]/div/table/tbody/tr[{row}]/td[6]").text
                 
                 # if not discharged & list is less than 50 add to list
-                if len(templist) < 5:
+                if len(templist) < number:
                     if not discharge_date:
                         person_dict = {
                         'name': name,
                         'book_and_case': int(book_and_case),
                         'location': location
                     }
-                        templist.append(person_dict)
+                        # checks to see if person exists, if so adds to list and DB
+                        templist = check_and_add_name(person_dict, templist)
                     else:
                         # skip if there's a discharge date
                         print('continued')
                         continue
-                elif len(templist) >= 5:
+                elif len(templist) >= 50:
                     # exit condition for when the list is over 50 partway through a name
                     # if the list has data, return it. 
                     
                     # temp export of data to CSV for Printing etc 
                     data_frame = pd.DataFrame(templist)
                     data_frame.to_csv('./namesapp/nyc-data/new_table.csv')
-                    add_names(templist)
-                    return templist
+                    
                 # click back to main element
             driver.find_element_by_xpath("//*[@id='home_form:j_id_35']").click()  
         except Exception as e: 
-            print(driver.page_source)
+            #print(driver.page_source)
             return {'error:': e }
 
         # increment name index if the loop finishes with 50 or less names
@@ -110,7 +114,6 @@ def search_names(data):
         data['current_line'] = current_line
         json.dump(data, json_file)
     driver.quit()
-    add_names(templist)
     return templist
 
 # ----------------------
@@ -120,9 +123,7 @@ def search_names(data):
 # Create your views here.
 
 def index(request):
-    templist = search_names(data)
-    context = { 'people': templist }
-    return render(request, 'namesapp/index.html', context)
+    return render(request, 'namesapp/index.html')
     
 def NYCAllNames(request):
     people = get_list_or_404(NYCAlready)
@@ -131,9 +132,6 @@ def NYCAllNames(request):
 
 def submit(request):
     number = request.POST['number']
-    name = request.POST['name']
-    book_and_case = request.POST['book_and_case']
-    location = request.POST['location']
-    new_person = NYCAlready.objects.get_or_create(name=name, book_and_case=book_and_case, location=location)
-    context = { 'number': number, 'new_person': name}
+    templist = search_names(data, number)
+    context = { 'people': templist, 'number': number }
     return render(request, 'namesapp/submit.html', context)

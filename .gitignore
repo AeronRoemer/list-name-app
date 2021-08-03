@@ -31,7 +31,8 @@ History
 1 contributor
 129 lines (105 sloc) 1.76 KB
 # Driver for Selenium
-/driver
+driver
+project/settings.py
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
