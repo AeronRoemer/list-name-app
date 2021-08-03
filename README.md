@@ -1,18 +1,17 @@
 Today: 
 1. [x] Pass list data to next view
 2. [x] Create header for view
-3. Create loading functionality for view
+3. [x] Create loading functionality for view
+    * [x] dots
 4. Beautify Pages
-5. Investigate JS/React/Etc
+    * Tailwind CSS
+5. [x] Investigate JS/React/Etc
+    * Advantages of the server-first architecture for this project: With a client first (using React, Vue etc) Django's built-in support for templates, forms, and other front-end goodies are basically thrown out the window. Current setup leveraged built in Django views and templates, forms, the built-in login interface, etc.
+    * graceful degreadation? (works without JS but is nicer with JS)
 
 
 Next:
 
-* Consider Front End
-    * Headers/Footers
-    * Views 
-    * Format List 
-* Consider 'Loading' wait screen for name retrieval. 
 * Consider Auth
 * Consider Error Handling for User
 * Date Added Functionality/ 'Most recent'
@@ -84,4 +83,6 @@ Day 6:
     * [x] postgres + DBs
     * [x] migrations
     * [x] install dependencies
-        * [x] pykerberos error
+        * [x] pykerberos error (installed things pykerberos was dependent on)
+
+Day 7:

@@ -1,1 +1,1 @@
-{"current_list": "top_100.txt", "current_line": 71}
+{"current_list": "top_100.txt", "current_line": 77}

@@ -4,7 +4,7 @@
 <form action="{% url 'namesapp:submit' %}" method="post">
     {% csrf_token %}
     <fieldset>
-        <legend><h2>New Person Submission Form</h2></legend>
+        <legend><h2>List Generation for NYC Jails</h2></legend>
         {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
             <h4>How many names do you want?</h4>    
             <select name="number" id="number">
@@ -15,14 +15,41 @@
                 <option value="75">75</option>
                 <option value="100">100</option>
             </select>
-    <input type="submit" value="Submit">
+    <input type="submit" value="Submit" onclick="loading()">
     </form>
     <ul>    
         {% for person in people %}
         <li>{{ person.name }}, {{ person.book_and_case }}, {{ person.location }}</li>
     {% endfor %}
     </ul>
-
+    <div id="loading-info">
+        <p>
+            Be aware that fetching names takes some time, as the script has a delay of at least 15 seconds between searches for any given group of last names.
+        </p>
+        <p>
+            <noscript>
+                The script runs on the server, so if you have javascript disabled everything will work. Just wait 3-4 minutes before checking back.
+            </noscript> 
+        </p>
+    </div>
+    <div id='loading-dots'></div>
     {% load static %}
-
+<script type='text/javascript'>
+const loading = () => {
+        console.log(event, 'clicked')
+        document.getElementById('loading-info').innerHTML = 'The script is gathering new names...please be patient'
+        window.setInterval( function() {
+            const dots = document.getElementById("loading-dots");
+            let text = ""
+            if ( dots.innerHTML.length > 3 ) {
+                dots.innerHTML = ""
+            }
+               
+            else {
+                dots.innerHTML += ".";
+            }
+        }, 300);
+    }
+   
+</script>
 {% endblock %}

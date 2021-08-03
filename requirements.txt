@@ -26,6 +26,7 @@ six==1.16.0
 soupsieve==2.2.1
 sqlparse==0.4.1
 stevedore==3.3.0
+tailwindcss==0.0.1
 urllib3==1.26.6
 virtualenv==20.6.0
 virtualenv-clone==0.5.5
