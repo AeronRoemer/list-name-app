@@ -4,11 +4,26 @@
     <p>There's been an error.</p>
 {% endif %}
 {% if people %}
-    <ol>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Book & Case #</th>
+            <th>Location</th>
+          </tr>
         {% for person in people %}
-        <li>{{ person.name }}, {{ person.book_and_case }}, {{ person.location }}</li>
+        <tr>
+            <td class='name'>
+                {{ person.name }}
+            </td>
+            <td class='book-and-case'>
+                {{ person.book_and_case }}
+            </td>
+            <td class='location'>
+                {{ person.location }}
+            </td>
+        </tr>
         {% endfor %}
-    </ol>
+    </table>
 {% else %}
     <p>There's been an error.</p>
 {% endif %}
