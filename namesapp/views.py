@@ -29,7 +29,6 @@ options.add_argument("--window-size=1920,1200")
 # keep track of the current line for week-to-week uses
 with open("./namesapp/nyc-data/nyc-current-script-data.txt") as j:
     data = json.load(j)
-    print(data['current_line'])
 
 with open('./namesapp/nyc-data/top_100.txt') as f:
     names_list = f.readlines()
@@ -123,7 +122,10 @@ def search_names(data, input_number=50):
 # Create your views here.
 
 def index(request):
-    return render(request, 'namesapp/index.html')
+    current_line = data['current_line']
+    current_name = names_list[current_line].strip()
+    context = { 'current_name': current_name, 'current_line': current_line }
+    return render(request, 'namesapp/index.html', context)
     
 def NYCAllNames(request):
     people = get_list_or_404(NYCAlready)

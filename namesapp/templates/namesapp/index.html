@@ -5,7 +5,7 @@
     {% csrf_token %}
     <fieldset>
         <legend><h2>List Generation for NYC Jails</h2></legend>
-        {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+        {% if current_name %}<p>Starting from name: <strong>{{ current_name }}</strong>, position <strong>{{ current_line }} </strong> out of 100 possible names to search</p>{% endif %}
             <h4>How many names do you want?</h4>    
             <select name="number" id="number">
                 <option value="3">3</option>
@@ -17,11 +17,6 @@
             </select>
     <input type="submit" value="Submit" onclick="loading()">
     </form>
-    <ul>    
-        {% for person in people %}
-        <li>{{ person.name }}, {{ person.book_and_case }}, {{ person.location }}</li>
-    {% endfor %}
-    </ul>
     <div id="loading-info">
         <p>
             Be aware that fetching names takes some time, as the script has a delay of at least 15 seconds between searches for any given group of last names.
