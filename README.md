@@ -1,25 +1,25 @@
 Today: 
-1. [x] Pass list data to next view
-2. [x] Create header for view
-3. [x] Create loading functionality for view
-    * [x] dots
-4. Beautify Pages
-    * Tailwind CSS
-5. [x] Investigate JS/React/Etc
-    * Advantages of the server-first architecture for this project: With a client first (using React, Vue etc) Django's built-in support for templates, forms, and other front-end goodies are basically thrown out the window. Current setup leveraged built in Django views and templates, forms, the built-in login interface, etc.
-    * graceful degreadation? (works without JS but is nicer with JS)
-
+1. [x] Install Tailwind CSS
+    * [x] Manage NPM install & build script
+2. Add Auth
+    * [x] Add user via admin page
+3. [x] Investigate & Fix Error
+4. [x] Accidentally Delete a Commit and have to re-do a bunch of stuff
 
 Next:
 
-* Consider Auth
+* Beautify with Tailwind
 * Consider Error Handling for User
-* Date Added Functionality/ 'Most recent'
+* Keep Last Week's Searches
+* Add next 100 names
+* Clear DOM on back
 
 ### Deployment Concerns
 * Web Browser (Install & Install Binary for Selenium)
 * (FOR ASYNC) from root: uvicorn project.asgi:application 
     * or with flag --reload 
+* Tailwind-re setup? 
+* NPM
 
 ### Prior: 
 Day 1:
@@ -86,3 +86,14 @@ Day 6:
         * [x] pykerberos error (installed things pykerberos was dependent on)
 
 Day 7:
+1. [x] Pass list data to next view
+2. [x] Create header for view
+3. [x] Create loading functionality for view
+    * [x] dots
+4. Beautify Pages
+    * Install Tailwind CSS
+5. [x] Investigate JS/React/Etc
+    * Advantages of the server-first architecture for this project: With a client first (using React, Vue etc) Django's built-in support for templates, forms, and other front-end goodies are basically thrown out the window. Current setup leveraged built in Django views and templates, forms, the built-in login interface, etc.
+    * graceful degreadation? (works without JS but is nicer with JS)
+
+Day 8:

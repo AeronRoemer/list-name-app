@@ -1,5 +1,6 @@
 from logging import error
-from django.shortcuts import get_list_or_404, render
+from django.shortcuts import get_list_or_404, render, redirect
+from django.contrib.auth import authenticate, login, logout
 
 from .models import NYCAlready, NYCCurrent
 
@@ -149,5 +150,13 @@ def get_names(request):
     context = { 'people': templist, 'number': number }
     return render(request, 'namesapp/submit.html', context)
 
-def login(request):
-    return render(request, 'namesapp/login.html')
+def login_page(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect("home")
+    context = {}
+    return render(request, 'namesapp/login.html', context)
