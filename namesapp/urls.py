@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 
 from . import views
 
@@ -6,5 +6,6 @@ app_name = 'namesapp'
 urlpatterns = [
     path('', views.index, name='index'),
     path('nyc-all-names', views.NYCAllNames, name='nyc-all-names'),
-    path('submit', views.submit, name='submit'),
+    path('get-names', views.get_names, name='get-names'),
+    path('login', views.login, name='login'),
 ]

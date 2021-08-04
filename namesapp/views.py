@@ -1,5 +1,5 @@
+from logging import error
 from django.shortcuts import get_list_or_404, render
-from django.http import HttpResponse, HttpResponseRedirect
 
 from .models import NYCAlready, NYCCurrent
 
@@ -83,6 +83,7 @@ def search_names(data, input_number=50):
                     }
                         # checks to see if person exists, if so adds to list and DB
                         templist = check_and_add_name(person_dict, templist)
+                        print(person_dict)
                     else:
                         # skip if there's a discharge date
                         print('continued')
@@ -95,10 +96,20 @@ def search_names(data, input_number=50):
                     data_frame = pd.DataFrame(templist)
                     data_frame.to_csv('./namesapp/nyc-data/new_table.csv')
                     
-                # click back to main element
-            driver.find_element_by_xpath("//*[@id='home_form:j_id_35']").click()  
+            # click back to main element
+            try:
+                item = driver.find_element_by_xpath("//*[@id='home_form:j_id_35']")
+                if item.is_displayed() :
+                    print('displayed')
+                    driver.find_element_by_xpath("//*[@id='home_form:j_id_35']").click()
+                else: 
+                    driver.find_element_by_xpath("//*[@id='home_form:j_id_1z']").click()  
+            except Exception as e:
+                print(e)
+
         except Exception as e: 
             #print(driver.page_source)
+            print(e)
             return {'error:': e }
 
         # increment name index if the loop finishes with 50 or less names
@@ -132,8 +143,11 @@ def NYCAllNames(request):
     context = { 'people': people }
     return render(request, 'namesapp/nyc-all-names.html', context)
 
-def submit(request):
+def get_names(request):
     number = request.POST['number']
     templist = search_names(data, number)
     context = { 'people': templist, 'number': number }
     return render(request, 'namesapp/submit.html', context)
+
+def login(request):
+    return render(request, 'namesapp/login.html')
