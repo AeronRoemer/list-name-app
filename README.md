@@ -1,7 +1,8 @@
 Today: 
 1. [x] Get redirects/links working in header
     * RequestContext (for data in base.html) - don't need (used: request.user)
-2. Demand Login to View Pages
+2. [x] Demand Login to View Pages/Redirect 
+3. Return List, CSV of All_Names
 
 Next:
 
@@ -10,7 +11,6 @@ Next:
 * Keep Last Week's Searches
 * Add next 100 names
 * Clear DOM on back
-* Return CSV of All_Names
 * Authentication Options
 
 ### Deployment Concerns

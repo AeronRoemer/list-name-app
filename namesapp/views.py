@@ -146,7 +146,7 @@ def NYCAllNames(request):
     people = get_list_or_404(NYCAlready)
     context = { 'people': people }
     print(context)
-    return render(request, 'namesapp/nyc-all-names.html', context)
+    return render(request, 'namesapp/ramNYC-all.html', context)
 
 @login_required
 def get_names(request):
