@@ -1,10 +1,8 @@
 Today: 
-1. [x] Install Tailwind CSS
-    * [x] Manage NPM install & build script
-2. Add Auth
+1. Finalize Auth
     * [x] Add user via admin page
-3. [x] Investigate & Fix Error
-4. [x] Accidentally Delete a Commit and have to re-do a bunch of stuff
+    * [x] Login-Logout Working
+    * [] Get redirects/links working
 
 Next:
 
@@ -13,6 +11,7 @@ Next:
 * Keep Last Week's Searches
 * Add next 100 names
 * Clear DOM on back
+* Return CSV of All_names
 
 ### Deployment Concerns
 * Web Browser (Install & Install Binary for Selenium)
@@ -97,3 +96,7 @@ Day 7:
     * graceful degreadation? (works without JS but is nicer with JS)
 
 Day 8:
+1. [x] Install Tailwind CSS
+    * [x] Manage NPM install & build script
+2. [x] Investigate & Fix Error in Scraping
+3. [x] Accidentally Delete a Commit and have to re-do a bunch of stuff
