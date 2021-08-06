@@ -1,6 +1,6 @@
 {% extends "namesapp/base.html" %} 
 {% block content %} 
-<h1>Hello from the template</h1>
+<h1>NYC Jails Name List Generation</h1>
 <div class='past-names'> 
     <a href="{{request.user}}-all">
         Get All Past Names
@@ -8,7 +8,7 @@
 <form action="{% url 'namesapp:get-names' %}" method="post">
     {% csrf_token %}
     <fieldset>
-        <legend><h2>List Generation for NYC Jails</h2></legend>
+        <legend><h2>List Generation Script</h2></legend>
         {% if current_name %}<p>Starting from name: <strong>{{ current_name }}</strong>, position <strong>{{ current_line }} </strong> out of 100 possible names to search</p>{% endif %}
             <h4>How many names do you want?</h4>    
             <select name="number" id="number">
@@ -39,7 +39,14 @@
             </noscript> 
         </p>
     </div>
-    <div id='loading-dots'></div>
+    <button type="button" class="bg-rose-600 ..." disabled>
+        <svg class="animate-spin h-5 w-5 mr-3 ..." viewBox="0 0 24 24">
+          <!-- ... -->
+        </svg>
+        Processing
+      </button>
+    <div id='loading-dots'>
+    </div>
     {% load static %}
 <script type='text/javascript'>
 const loading = () => {

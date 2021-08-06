@@ -2,8 +2,10 @@ from logging import error
 from django.shortcuts import get_list_or_404, render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse
 
 from .models import NYCAlready, NYCCurrent
+import csv
 
 
 ## SELENIUM STUFF
@@ -154,6 +156,19 @@ def get_names(request):
     templist = search_names(data, number)
     context = { 'people': templist, 'number': number }
     return render(request, 'namesapp/submit.html', context)
+
+def return_csv(request):
+    # Create the HttpResponse object with the appropriate CSV header.
+    response = HttpResponse(
+        content_type='text/csv',
+        headers={'Content-Disposition': 'attachment; filename="all-names-list.csv"'},
+    )
+    writer = csv.writer(response)
+    people = NYCAlready.objects.all()
+    print(people)
+    for person in people:
+        writer.writerow([person.name, person.book_and_case, person.location])
+    return response
 
 def login_page(request):
     if request.method == 'POST':

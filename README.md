@@ -2,16 +2,20 @@ Today:
 1. [x] Get redirects/links working in header
     * RequestContext (for data in base.html) - don't need (used: request.user)
 2. [x] Demand Login to View Pages/Redirect 
-3. Return List, CSV of All_Names
-
+3. [x] Return List, CSV of All_Names
+4. Improve Look of Home Page (links, etc)
+    * [x] Display, Move Links
+    * [x] Highlight/Hide Active Links
+    * Tailwind for Header
+5. Tailwind Dark Mode
 Next:
 
 * Beautify with Tailwind
-* Consider Error Handling for User
 * Keep Last Week's Searches
 * Add next 100 names
 * Clear DOM on back
 * Authentication Options
+* Testing
 
 ### Deployment Concerns
 * Web Browser (Install & Install Binary for Selenium)

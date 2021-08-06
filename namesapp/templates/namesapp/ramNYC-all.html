@@ -1,29 +1,14 @@
 {% extends "namesapp/base.html" %} 
 {% block content %} 
-{% if people %}
 <div>
-    CSV Download
+    <a href="return-csv">CSV Download</a>
 </div>
-    <table>
-        <tr>
-            <th>Name</th>
-            <th>Book & Case #</th>
-            <th>Location</th>
-          </tr>
-        {% for person in people %}
-        <tr>
-            <td class='name'>
-                {{ person.name }}
-            </td>
-            <td class='book-and-case'>
-                {{ person.book_and_case }}
-            </td>
-            <td class='location'>
-                {{ person.location }}
-            </td>
-        </tr>
-        {% endfor %}
-    </table>
+{% if people %}
+    <ol>
+    {% for person in people %}
+        <li>{{ person.name }}, {{ person.book_and_case }}, {{ person.location }}</li>
+    {% endfor %}
+    </ol>
 {% else %}
     <p>There's been an error.</p>
 {% endif %}
