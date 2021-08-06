@@ -1,6 +1,7 @@
 from logging import error
 from django.shortcuts import get_list_or_404, render, redirect
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 
 from .models import NYCAlready, NYCCurrent
 
@@ -133,18 +134,21 @@ def search_names(data, input_number=50):
 # ----------------------
 # Create your views here.
 
+@login_required()
 def index(request):
     current_line = data['current_line']
     current_name = names_list[current_line].strip()
     context = { 'current_name': current_name, 'current_line': current_line }
     return render(request, 'namesapp/index.html', context)
-    
+
+@login_required   
 def NYCAllNames(request):
     people = get_list_or_404(NYCAlready)
     context = { 'people': people }
     print(context)
     return render(request, 'namesapp/nyc-all-names.html', context)
 
+@login_required
 def get_names(request):
     number = request.POST['number']
     templist = search_names(data, number)

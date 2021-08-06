@@ -13,11 +13,14 @@
     Home, Search, Old Names
 </div>
 <div class="login">
-    { % if request.user.is_authenticated % }
+    {% if request.user.is_authenticated %}
     <span>User: {{ request.user }}</span>
-    { % else % }
-    <a href="{% url 'login' %}"> Login</a>
-    { % endif % }
+    <span>
+        <a href="logout">Logout</a> 
+    </span>
+    {% else %}
+    <a href="login">Login</a>
+    {% endif %}
 </div>
 </header> 
 {% block content %} 

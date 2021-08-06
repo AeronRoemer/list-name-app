@@ -1,7 +1,6 @@
 {% extends "namesapp/base.html" %} 
 {% block content %} 
 <h1>Hello from the template</h1>
-
 <form action="{% url 'namesapp:get-names' %}" method="post">
     {% csrf_token %}
     <fieldset>

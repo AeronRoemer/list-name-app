@@ -1,8 +1,7 @@
 Today: 
-1. Finalize Auth
-    * [x] Add user via admin page
-    * [x] Login-Logout Working
-    * [] Get redirects/links working
+1. [x] Get redirects/links working in header
+    * RequestContext (for data in base.html) - don't need (used: request.user)
+2. Demand Login to View Pages
 
 Next:
 
@@ -11,7 +10,8 @@ Next:
 * Keep Last Week's Searches
 * Add next 100 names
 * Clear DOM on back
-* Return CSV of All_names
+* Return CSV of All_Names
+* Authentication Options
 
 ### Deployment Concerns
 * Web Browser (Install & Install Binary for Selenium)
@@ -100,3 +100,10 @@ Day 8:
     * [x] Manage NPM install & build script
 2. [x] Investigate & Fix Error in Scraping
 3. [x] Accidentally Delete a Commit and have to re-do a bunch of stuff
+
+Day 9: 
+1. [x] Finalize Auth
+    * [x] Add user via admin page
+    * [x] Login-Logout Working
+
+Day 10:
