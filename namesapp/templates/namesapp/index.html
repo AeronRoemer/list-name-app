@@ -1,16 +1,15 @@
 {% extends "namesapp/base.html" %} 
 {% block content %} 
-<h1>NYC Jails Name List Generation</h1>
-<div class='past-names'> 
+<div class='text-lg font-bold'> 
     <a href="{{request.user}}-all">
         Get All Past Names
     </a></div>
 <form action="{% url 'namesapp:get-names' %}" method="post">
     {% csrf_token %}
     <fieldset>
-        <legend><h2>List Generation Script</h2></legend>
-        {% if current_name %}<p>Starting from name: <strong>{{ current_name }}</strong>, position <strong>{{ current_line }} </strong> out of 100 possible names to search</p>{% endif %}
-            <h4>How many names do you want?</h4>    
+        <legend><h2 class='text-3xl font-bold'>List Generation Script</h2></legend>
+        {% if current_name %}<p class='text'>Starting from name: <strong>{{ current_name }}</strong>, position <strong>{{ current_line }} </strong> out of 100 possible names to search</p>{% endif %}
+            <h4 class="text-lg">How many names do you want?</h4>    
             <select name="number" id="number">
                 <option value="3">3</option>
                 <option value="50">50</option>
@@ -21,30 +20,20 @@
             </select>
     <input type="submit" value="Submit" onclick="loading()">
     </form>
-    <div id="loading-info">
+    <div id="loading-info" class="text-sm">
         <p>
             Be aware that fetching names takes some time, as the script has a delay of at least 15 seconds between searches for any given group of last names.
-        </p>
-        <p>
-            Also, keep in mind that if you do something odd like click the submit button a dozen times really quick, it may break the application for the day.
-            <br>
-            The web scraper is designed to imitate a human, if it becomes clear that we are not a human it seems to lock us out for some time.
         </p>
         <p>
             It's best to just press once and wait. If there are errors, they'll be displayed on the next page. 
         </p>
         <p>
             <noscript>
-                The script runs on the server, so if you have javascript disabled everything will work. Just wait 3-4 minutes before checking back.
+                The script runs on the server, so if you have javascript disabled everything will work. Just <strong>wait 3-4 minutes</strong> before checking back.
             </noscript> 
         </p>
     </div>
-    <button type="button" class="bg-rose-600 ..." disabled>
-        <svg class="animate-spin h-5 w-5 mr-3 ..." viewBox="0 0 24 24">
-          <!-- ... -->
-        </svg>
-        Processing
-      </button>
+
     <div id='loading-dots'>
     </div>
     {% load static %}

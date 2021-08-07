@@ -1,13 +1,8 @@
 Today: 
-1. [x] Get redirects/links working in header
-    * RequestContext (for data in base.html) - don't need (used: request.user)
-2. [x] Demand Login to View Pages/Redirect 
-3. [x] Return List, CSV of All_Names
-4. Improve Look of Home Page (links, etc)
-    * [x] Display, Move Links
-    * [x] Highlight/Hide Active Links
-    * Tailwind for Header
-5. Tailwind Dark Mode
+
+1. Style Fonts
+    * How to Add Custom font to Tailwind (later)
+
 Next:
 
 * Beautify with Tailwind
@@ -16,13 +11,11 @@ Next:
 * Clear DOM on back
 * Authentication Options
 * Testing
+* Learn more about PostCss and PurgeCSS
 
 ### Deployment Concerns
 * Web Browser (Install & Install Binary for Selenium)
-* (FOR ASYNC) from root: uvicorn project.asgi:application 
-    * or with flag --reload 
-* Tailwind-re setup? 
-* NPM
+* Tailwind-re setup: NPM
 
 ### Prior: 
 Day 1:
@@ -111,3 +104,10 @@ Day 9:
     * [x] Login-Logout Working
 
 Day 10:
+1. [x] Get redirects/links working in header
+2. [x] Demand Login to View Pages/Redirect 
+3. [x] Return List, CSV of All_Names
+4. Improve Look of Home Page (links, etc)
+    * [x] Display, Move Links
+    * [x] Highlight/Hide Active Links
+    * Tailwind for Header
