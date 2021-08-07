@@ -177,11 +177,11 @@ def login_page(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect("/namesapp")
+            return redirect("/namesapp/home")
     context = {}
     return render(request, 'namesapp/login.html', context)
 
 
 def logout_user(request):
     logout(request)
-    return redirect('/namesapp')
+    return redirect('/namesapp/home')

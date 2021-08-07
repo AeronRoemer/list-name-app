@@ -1,17 +1,20 @@
 Today: 
 
 1. [x] Style Front Page
-2. Finish Styling Header
+2. [x] Finish Styling Header
 3. [x] Style Names List
 * How to Add Custom font to Tailwind (later)
 Good styling resource: https://tailblocks.cc/
 
 Next:
 
+* Style Login Screen
+* Handle Bad Logins
+* About Page
 * Return View Options
-* Beautify with Tailwind
 * Keep Last Week's Searches
 * Add next 100 names
+-------- 
 * Clear DOM on back
 * Authentication Options
 * Testing
