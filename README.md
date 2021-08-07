@@ -1,10 +1,14 @@
 Today: 
 
-1. Style Fonts
-    * How to Add Custom font to Tailwind (later)
+1. [x] Style Front Page
+2. Finish Styling Header
+3. [x] Style Names List
+* How to Add Custom font to Tailwind (later)
+Good styling resource: https://tailblocks.cc/
 
 Next:
 
+* Return View Options
 * Beautify with Tailwind
 * Keep Last Week's Searches
 * Add next 100 names

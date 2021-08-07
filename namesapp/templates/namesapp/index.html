@@ -1,41 +1,79 @@
 {% extends "namesapp/base.html" %} 
 {% block content %} 
-<div class='text-lg font-bold'> 
-    <a href="{{request.user}}-all">
-        Get All Past Names
-    </a></div>
-<form action="{% url 'namesapp:get-names' %}" method="post">
-    {% csrf_token %}
-    <fieldset>
-        <legend><h2 class='text-3xl font-bold'>List Generation Script</h2></legend>
-        {% if current_name %}<p class='text'>Starting from name: <strong>{{ current_name }}</strong>, position <strong>{{ current_line }} </strong> out of 100 possible names to search</p>{% endif %}
-            <h4 class="text-lg">How many names do you want?</h4>    
-            <select name="number" id="number">
+<div class=''> 
+    <div class="min-h-screen bg-gray-100 p-0 sm:p-12">
+        <div class="mx-auto max-w-md px-6 py-12 bg-white border-0 shadow-lg sm:rounded-3xl">
+          <legend><h1 class="text-2xl font-bold mb-8">Name List Generation</h1></legend>
+            <form action="{% url 'namesapp:get-names' %}" method="post" id="form">
+                {% csrf_token %}
+            {% if current_name %}<p class='text'>Starting from name: <strong>{{ current_name }}</strong><br /><strong>{{ current_line }} </strong> out of 100 possible names to search</p><br />{% endif %}
+            <div class="relative z-0 w-full mb-5">
+              <select
+                name="number"
+                id="number"
+                value=""
+                class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none z-1 focus:outline-none focus:ring-0 focus:border-black border-gray-200">
+                <option value="50" selected disabled hidden></option>
                 <option value="3">3</option>
                 <option value="50">50</option>
                 <option value="10">10</option>
                 <option value="25">25</option>
-                <option value="75">75</option>
                 <option value="100">100</option>
-            </select>
-    <input type="submit" value="Submit" onclick="loading()">
-    </form>
-    <div id="loading-info" class="text-sm">
-        <p>
-            Be aware that fetching names takes some time, as the script has a delay of at least 15 seconds between searches for any given group of last names.
-        </p>
-        <p>
-            It's best to just press once and wait. If there are errors, they'll be displayed on the next page. 
-        </p>
-        <p>
-            <noscript>
-                The script runs on the server, so if you have javascript disabled everything will work. Just <strong>wait 3-4 minutes</strong> before checking back.
-            </noscript> 
-        </p>
-    </div>
+              </select>
+              <label for="select" class="text-gray-500">Choose a number of names</label>
+              <span class="text-sm text-red-600 hidden" id="error">Option has to be selected</span>
+            </div>
 
-    <div id='loading-dots'>
-    </div>
+            <fieldset class="relative z-0 w-full p-px mb-5">
+                <legend class="absolute text-gray-500 transform scale-75 -top-3 origin-0">Choose an option</legend>
+                <div class="block pt-3 pb-2 space-x-4">
+                  <label>
+                    <input
+                      type="radio"
+                      name="radio"
+                      value="1"
+                      class="mr-2 text-black border-2 border-gray-300 focus:border-gray-300 focus:ring-black"/>
+                    Return CSV
+                  </label>
+                  <label>
+                    <input
+                      type="radio"
+                      name="radio"
+                      value="2"
+                      class="mr-2 text-black border-2 border-gray-300 focus:border-gray-300 focus:ring-black"/>
+                    Return Web View
+                  </label>
+                </div>
+                <span class="text-sm text-red-600 hidden" id="error">Option has to be selected</span>
+              </fieldset>
+            <div id="loading-info" class="text-sm text-gray-500">
+                <p>
+                    Be aware that fetching names takes some time, as the script has a delay of at least 15 seconds between searches for any given group of last names.
+                </p>
+                <br />
+                <p>
+                    It's best to just press once and wait. If there are errors, they'll be displayed on the next page. 
+                </p>
+                <p>
+                    <noscript>
+                        The script runs on the server, so if you have javascript disabled everything will work. Just <strong>wait 3-4 minutes</strong> before checking back.
+                    </noscript> 
+                </p>
+            </div>
+            <div id='loading-dots'>
+            </div>
+            <button
+              id="button"
+              type="submit"
+              value="submit"
+              onclick="loading()"
+              class="w-full px-6 py-3 mt-3 text-lg text-white transition-all duration-150 ease-linear rounded-lg shadow outline-none bg-red-500 hover:bg-red-600 hover:shadow-lg focus:outline-none">
+              Submit
+            </button>
+          </form>
+
+        </div>
+      </div>
     {% load static %}
 <script type='text/javascript'>
 const loading = () => {

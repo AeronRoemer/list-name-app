@@ -1,32 +1,41 @@
 {% extends "namesapp/base.html" %} 
 {% block content %} 
-{% if number %}
-    <h1>{{ number }} </h1>
-{% else %}
-    <p>There's been an error.</p>
-{% endif %}
 {% if people %}
-    <table>
-        <tr>
-            <th>Name</th>
-            <th>Book & Case #</th>
-            <th>Location</th>
-          </tr>
-        {% for person in people %}
-        <tr>
-            <td class='name'>
-                {{ person.name }}
-            </td>
-            <td class='book-and-case'>
-                {{ person.book_and_case }}
-            </td>
-            <td class='location'>
-                {{ person.location }}
-            </td>
-        </tr>
-        {% endfor %}
-    </table>
+<section class="container mx-auto p-6 font-mono">
+    <div class="w-full mb-8 overflow-hidden rounded-lg shadow-lg">
+    <h1 class="font-bold text-3xl">Found Names:</h1>
+      <div class="w-full overflow-x-auto">
+        <table class="w-full">
+          <thead>
+            <tr class="text-md font-semibold tracking-wide text-left text-gray-900 bg-gray-100 uppercase border-b border-gray-600">
+              <th class="px-4 py-3">Name</th>
+              <th class="px-4 py-3">Book And Case #</th>
+              <th class="px-4 py-3">Location</th>
+            </tr>
+          </thead>
+          <tbody class="bg-white">
+            {% for person in people %}
+            <tr class="text-gray-700">
+                <td class="px-4 py-3 border">
+                    <p class="font-semibold text-black">
+                        {{ person.name }}
+                    </p>
+                </td>
+                <td class="px-4 py-3 text-ms border">
+                    {{ person.book_and_case }}
+                </td>
+                <td class="px-4 py-3 text-ms font-semibold border">
+                    {{ person.location }}
+                </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
 {% else %}
-    <p>There's been an error.</p>
+    <p class="text-2xl">There's been an error.</p>
 {% endif %}
 {% endblock %}
