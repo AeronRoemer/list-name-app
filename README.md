@@ -3,11 +3,18 @@ Day 12:
 1. [x] Style About Page 
 2. [x] Handle Bad Logins
 3. [x] Return View Options
+4. Keep Last Week's Searches
+    * [x] Add to DB On Search
+    * Delete When Search is Re-Run
+    * Display in View
+    * Show starting number
+
 
 Next:
 
+* Make last weeks names re-searchable
+* Track Names with Date
 * Make page refresh on Reload
-* Keep Last Week's Searches
 * Add next 100 names
 -------- 
 * Deploy
