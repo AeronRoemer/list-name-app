@@ -1,8 +1,8 @@
 {% extends "namesapp/base.html" %} 
 {% block content %} 
-<div class=''> 
-    <div class="min-h-screen bg-gray-100 p-0 sm:p-12">
-        <div class="mx-auto max-w-md px-6 py-12 bg-white border-0 shadow-lg sm:rounded-3xl">
+
+<div class="min-h-screen bg-gray-100 p-0 sm:p-12">
+    <div class="mx-auto max-w-md px-6 py-12 bg-white border-0 shadow-lg sm:rounded-3xl">
           <legend><h1 class="text-2xl font-bold mb-8">Name List Generation</h1></legend>
             <form action="{% url 'namesapp:get-names' %}" method="post" id="form">
                 {% csrf_token %}
@@ -33,7 +33,7 @@
                       name="radio"
                       value="1"
                       class="mr-2 text-black border-2 border-gray-300 focus:border-gray-300 focus:ring-black"/>
-                    Return CSV
+                    Download CSV
                   </label>
                   <label>
                     <input
@@ -41,7 +41,7 @@
                       name="radio"
                       value="2"
                       class="mr-2 text-black border-2 border-gray-300 focus:border-gray-300 focus:ring-black"/>
-                    Return Web View
+                    Web View
                   </label>
                 </div>
                 <span class="text-sm text-red-600 hidden" id="error">Option has to be selected</span>
@@ -73,7 +73,8 @@
           </form>
 
         </div>
-      </div>
+
+</div>
     {% load static %}
 <script type='text/javascript'>
 const loading = () => {

@@ -157,6 +157,9 @@ def get_names(request):
     context = { 'people': templist, 'number': number }
     return render(request, 'namesapp/submit.html', context)
 
+def about(request):
+    return render(request, 'namesapp/about.html')
+
 def return_csv(request):
     # Create the HttpResponse object with the appropriate CSV header.
     response = HttpResponse(
@@ -180,7 +183,6 @@ def login_page(request):
             return redirect("/namesapp/home")
     context = {}
     return render(request, 'namesapp/login.html', context)
-
 
 def logout_user(request):
     logout(request)
