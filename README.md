@@ -2,7 +2,7 @@ Today:
 Day 12:
 1. [x] Style About Page 
 2. [x] Handle Bad Logins
-3. Return View Options
+3. [x] Return View Options
 
 Next:
 
