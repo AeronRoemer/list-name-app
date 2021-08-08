@@ -49,10 +49,10 @@ def check_and_add_name(person, templist):
     return templist
     
 
-def search_names(data, input_number=50):
+def search_names(data, input_number=50, current_line=data['current_line']):
+    previous_line = current_line
     number = int(input_number)
     templist = []
-    current_line = data['current_line']
     # creates webdriver
     driver = webdriver.Chrome(options=options, executable_path=DRIVER_PATH)
     driver.get("https://a073-ils-web.nyc.gov/inmatelookup/pages/home/home.jsf")
@@ -126,6 +126,7 @@ def search_names(data, input_number=50):
         
     with open("./namesapp/nyc-data/nyc-current-script-data.txt", "w") as json_file:
         data['current_line'] = current_line
+        data['previous_line'] = previous_line
         json.dump(data, json_file)
     driver.quit()
     return templist

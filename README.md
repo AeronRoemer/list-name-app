@@ -4,13 +4,14 @@ Today:
 2. [x] Finish Styling Header
 3. [x] Style Names List
 4. [x] Style Login Screen
+5. [x] Skeleton Next Pages
 * How to Add Custom font to Tailwind (later)
 Good styling resource: https://tailblocks.cc/
 
 Next:
 
 * Handle Bad Logins
-* About Page
+* Style About Page
 * Return View Options
 * Keep Last Week's Searches
 * Add next 100 names
