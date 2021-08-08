@@ -1,0 +1,59 @@
+{% extends "namesapp/base.html" %}
+{% block content %}
+
+<div class="bg-lightblue py-20 px-4">
+    <div class="mx-auto max-w-6xl flex flex-col md:flex-row">
+        <h1 class="mr-6 w-full md:w-1/4 text-3xl font-extrabold leading-9">
+            About
+        </h1>
+        <dl class="w-full md:w-3/4">
+            <dt class="mb-4">
+                <h3 class="text-xl font-semibold">
+                    What Does It Do?
+                </h3>
+            </dt>
+            <dd class="mb-10">
+                <p>
+                    This Name Finder web application is custom made to find and return a list of information needed to contact currently incarcerated people. It uses a list of the top 100 most common las names in the US to perform the search.                </p>
+            </dd>
+            <dt class="mb-4">
+                <h3 class="text-xl font-semibold">
+                    How does it do it?
+                </h3>
+            </dt>
+            <dd class="mb-10">
+                <p>
+                    It uses Django to organize the pages, a web scraper (Selenium) to do most of the searching work, and is hosted on a Virtual Private Server. 
+                </p>
+            </dd>
+            <dt class="mb-4">
+                <h3 class="text-xl font-semibold">
+                    Is it safe?
+                </h3>
+            </dt>
+            <dd class="mb-10">
+                <p>
+                    It should be, the site gathers no user data and is hosted away from tech giants like Amazon, Google, etc. It's hosted on Vultr, but ideally will eventually move to a non-corportate hosting in Germany. The website is not publicised.  
+                </p>
+                <p>
+                    The code is all viewable here:
+                </p>
+            </dd>
+            <dt class="mb-4">
+                <h3 class="text-xl font-semibold">
+                    Can it be used by anyone?
+                </h3>
+            </dt>
+            <dd class="mb-10">
+                <p>
+                    No, it is custom made for each user/user group.
+                </p>
+                <p>
+                    The basic process can be rewritten to include more websites, and be able to search more facilties. But because each facilty's website is different, each search will take some time to set up.
+                </p>
+            </dd>
+        </dl>
+    </div>
+</div>
+
+{% endblock %}

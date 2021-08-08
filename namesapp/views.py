@@ -165,6 +165,15 @@ def get_names(request):
     format = request.POST['radio']
     number = request.POST['number']
     templist = search_names(data, number)
+    if format == '1':
+        response = HttpResponse(
+        content_type='text/csv',
+        headers={'Content-Disposition': 'attachment; filename="all-names-list.csv"'},
+        )
+        writer = csv.writer(response)
+        for person in templist:
+            writer.writerow([person['name'], person['book_and_case'], person['location']])
+        return response
     context = { 'people': templist, 'number': number }
     return render(request, 'namesapp/submit.html', context)
 

@@ -1,8 +1,8 @@
 Today: 
 Day 12:
-1. Style About Page (about page)
-2. Handle Bad Logins (login view, template)
-3. Return View Options (get_names view)
+1. [x] Style About Page 
+2. [x] Handle Bad Logins
+3. Return View Options
 
 Next:
 
