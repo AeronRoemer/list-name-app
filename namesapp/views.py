@@ -1,6 +1,8 @@
 from logging import error
 from django.shortcuts import get_list_or_404, render, redirect
+from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 
@@ -151,8 +153,16 @@ def NYCAllNames(request):
     print(context)
     return render(request, 'namesapp/ramNYC-all.html', context)
 
+@login_required   
+def recent_NYC(request):
+    people = get_list_or_404(NYCCurrent)
+    context = { 'people': people }
+    print(context)
+    return render(request, 'namesapp/most-recent-ramNYC.html', context)
+
 @login_required
 def get_names(request):
+    format = request.POST['radio']
     number = request.POST['number']
     templist = search_names(data, number)
     context = { 'people': templist, 'number': number }
@@ -176,14 +186,22 @@ def return_csv(request):
 
 def login_page(request):
     if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-        user = authenticate(request, username=username, password=password)
+        form = AuthenticationForm(request.POST)
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(username=username, password=password)
+
         if user is not None:
-            login(request, user)
-            return redirect("/namesapp/home")
-    context = {}
-    return render(request, 'namesapp/login.html', context)
+            if user.is_active:
+                login(request, user)
+                return redirect('/namesapp/home')
+        else:
+            messages.error(request, 'username or password not correct')
+            return redirect('./login')
+
+    else:
+        form = AuthenticationForm()
+    return render(request, 'namesapp/login.html', {'form': form})
 
 def logout_user(request):
     logout(request)

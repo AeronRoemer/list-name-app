@@ -1,21 +1,17 @@
 Today: 
-
-1. [x] Style Front Page
-2. [x] Finish Styling Header
-3. [x] Style Names List
-4. [x] Style Login Screen
-5. [x] Skeleton Next Pages
-* How to Add Custom font to Tailwind (later)
-Good styling resource: https://tailblocks.cc/
+Day 12:
+1. Style About Page (about page)
+2. Handle Bad Logins (login view, template)
+3. Return View Options (get_names view)
 
 Next:
 
-* Handle Bad Logins
-* Style About Page
-* Return View Options
+* Make page refresh on Reload
 * Keep Last Week's Searches
 * Add next 100 names
 -------- 
+* Deploy
+--------
 * Clear DOM on back
 * Authentication Options
 * Testing
@@ -119,3 +115,13 @@ Day 10:
     * [x] Display, Move Links
     * [x] Highlight/Hide Active Links
     * Tailwind for Header
+
+Day 11: 
+1. [x] Style Front Page
+2. [x] Finish Styling Header
+3. [x] Style Names List
+4. [x] Style Login Screen
+5. [x] Skeleton Next Pages
+* How to Add Custom font to Tailwind (later)
+Good styling resource/s: https://tailblocks.cc/
+https://tailwindcomponents.com

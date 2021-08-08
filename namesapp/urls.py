@@ -10,5 +10,6 @@ urlpatterns = [
     path('login', views.login_page, name='login'),
     path('logout', views.logout_user, name='logout'),
     path('return-csv', views.return_csv, name='return-csv'),
-    path('about', views.about, name='about')
+    path('about', views.about, name='about'),
+    path('most-recent-ramNYC', views.recent_NYC, name='most-recent-ramNYC'),
 ]
