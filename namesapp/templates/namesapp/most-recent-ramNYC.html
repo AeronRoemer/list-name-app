@@ -3,14 +3,14 @@
 
 {% if people %}
 <section class="container mx-auto p-6 font-mono">
+  <div>
+    <h1 class="font-bold text-3xl">Names From Last Search:</h1> 
+    <button class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 rounded text-base mt-4 mb-4 hover:bg-gray-200">
+        <a href="return-csv-recent">CSV Download</a>
+    </button>
+    <p class="text-md text-gray-700">Names from <strong>{{ previous_line }}</strong> to <strong> {{ current_line }}</strong>.</p>
+  </div>
     <div class="w-full mb-8 overflow-hidden rounded-lg shadow-lg">
-    <div>
-        <h1 class="font-bold text-3xl">Names From Last Search:</h1> 
-        <button>
-            <a href="return-csv-recent">CSV Download</a>
-        </button>
-        <p class="text-md text-gray-700">Names from <strong>{{ previous_line }}</strong> to <strong> {{ current_line }}</strong>.</p>
-    </div>
       <div class="w-full overflow-x-auto">
         <table class="w-full">
           <thead>

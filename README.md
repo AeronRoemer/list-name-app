@@ -1,20 +1,12 @@
 Today: 
-Day 12:
-1. [x] Style About Page 
-2. [x] Handle Bad Logins
-3. [x] Return View Options
-4. Keep Last Week's Searches
-    * [x] Add to DB On Search
-    * Delete When Search is Re-Run
-    * Show starting number
+1. [x] Previous Searches
+    * [x] Show starting number
     * [x] Display in View
-    * [x] Offer CSV (?)
+2. [x] Style CSV Button
 
 
 Next:
-* Style CSV Button (?)
-* Make last weeks names re-searchable
-* Track Names with Date
+* Beautify Loading Div
 * Make page refresh on Reload
 * Add next 100 names
 -------- 
@@ -133,3 +125,12 @@ Day 11:
 * How to Add Custom font to Tailwind (later)
 Good styling resource/s: https://tailblocks.cc/
 https://tailwindcomponents.com
+
+Day 12:
+1. [x] Style About Page 
+2. [x] Handle Bad Logins
+3. [x] Return View Options
+4. [x] Keep Last Week's Searches
+    * [x] Add to DB On Search
+    * [x] Delete When Search is Re-Run
+    * [x] Offer CSV (?)
