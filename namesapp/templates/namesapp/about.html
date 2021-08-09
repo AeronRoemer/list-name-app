@@ -25,6 +25,9 @@
                 <p>
                     It uses Django to organize the pages, a web scraper (Selenium) to do most of the searching work, and is hosted on a Virtual Private Server. 
                 </p>
+                <p>
+                    The web scraper imitates a human clicking the search page on a DOC's inmate search. It scrolls through the page, looking for names and info, then clicks back to the search page and looks again. The script runs a browser window, but it's not visible to us as humans. There's a way of scraping that lets you see the browser window and what it's doing, but since it runs remotely on the server there's no reason for using that style.
+                </p>
             </dd>
             <dt class="mb-4">
                 <h3 class="text-xl font-semibold">
@@ -33,10 +36,10 @@
             </dt>
             <dd class="mb-10">
                 <p>
-                    It should be, the site gathers no user data and is hosted away from tech giants like Amazon, Google, etc. It's hosted on Vultr, but ideally will eventually move to a non-corportate hosting in Germany. The website is not publicised.  
+                    It should be, the site gathers no user data (such as cookies) and is hosted away from tech giants like Amazon, Google, etc. It's hosted on Vultr, but ideally will eventually move to a non-corportate hosting in Germany. The website is not publicised.  
                 </p>
                 <p>
-                    The code is all viewable here:
+                    The script for scraping runs on the server, you can see that the website still works if you disable Javascript running in the browser. 
                 </p>
             </dd>
             <dt class="mb-4">
