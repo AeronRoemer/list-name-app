@@ -58,7 +58,7 @@ def search_names(data, input_number=50, current_line=data['current_line']):
     # creates webdriver
     driver = webdriver.Chrome(options=options, executable_path=DRIVER_PATH)
     driver.get("https://a073-ils-web.nyc.gov/inmatelookup/pages/home/home.jsf")
-
+    NYCCurrent.objects.all().delete()
     while len(templist) < number:
         current_name = names_list[current_line].strip()
         try:
@@ -167,7 +167,9 @@ def NYCAllNames(request):
 @login_required   
 def recent_NYC(request):
     people = get_list_or_404(NYCCurrent)
-    context = { 'people': people }
+    current_line = data['current_line']
+    previous_line = data['previous_line']
+    context = { 'people': people, 'current_line': current_line, 'previous_line': previous_line }
     print(context)
     return render(request, 'namesapp/most-recent-ramNYC.html', context)
 

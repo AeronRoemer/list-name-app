@@ -6,13 +6,13 @@ Day 12:
 4. Keep Last Week's Searches
     * [x] Add to DB On Search
     * Delete When Search is Re-Run
-    * [x] Display in View
     * Show starting number
-    * Offer CSV (?)
+    * [x] Display in View
+    * [x] Offer CSV (?)
 
 
 Next:
-
+* Style CSV Button (?)
 * Make last weeks names re-searchable
 * Track Names with Date
 * Make page refresh on Reload
