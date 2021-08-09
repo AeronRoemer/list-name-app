@@ -45,7 +45,7 @@ def check_and_add_name(person, templist):
         print('found', person)
     else:
         new_person = NYCAlready(pk=person['book_and_case'], name=person['name'], location=person['location'])
-        NYCCurrent(pk=person['book_and_case'], name=person['name'], location=person['location']).save
+        NYCCurrent(pk=person['book_and_case'], name=person['name'], location=person['location']).save()
         new_person.save()
         templist.append(person)
         print('saved')
