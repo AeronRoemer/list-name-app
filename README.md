@@ -6,8 +6,9 @@ Day 12:
 4. Keep Last Week's Searches
     * [x] Add to DB On Search
     * Delete When Search is Re-Run
-    * Display in View
+    * [x] Display in View
     * Show starting number
+    * Offer CSV (?)
 
 
 Next:

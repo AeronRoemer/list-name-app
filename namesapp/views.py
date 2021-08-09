@@ -45,12 +45,11 @@ def check_and_add_name(person, templist):
         print('found', person)
     else:
         new_person = NYCAlready(pk=person['book_and_case'], name=person['name'], location=person['location'])
-        NYCCurrent(pk=person['book_and_case'], name=person['name'], location=person['location']).save()
+        NYCCurrent(pk=person['book_and_case'], name=person['name'], location=person['location']).save
         new_person.save()
         templist.append(person)
         print('saved')
-    return templist
-    
+    return templist    
 
 def search_names(data, input_number=50, current_line=data['current_line']):
     previous_line = current_line
@@ -134,6 +133,17 @@ def search_names(data, input_number=50, current_line=data['current_line']):
     driver.quit()
     return templist
 
+def csv_helper(people):
+    # Create the HttpResponse object with the appropriate CSV header.
+    response = HttpResponse(
+        content_type='text/csv',
+        headers={'Content-Disposition': 'attachment; filename="all-names-list.csv"'},
+    )
+    writer = csv.writer(response)
+    print(people)
+    for person in people:
+        writer.writerow([person.name, person.book_and_case, person.location])
+    return response
 # ----------------------
 # ----------------------
 # ----------------------
@@ -167,32 +177,18 @@ def get_names(request):
     number = request.POST['number']
     templist = search_names(data, number)
     if format == '1':
-        response = HttpResponse(
-        content_type='text/csv',
-        headers={'Content-Disposition': 'attachment; filename="all-names-list.csv"'},
-        )
-        writer = csv.writer(response)
-        for person in templist:
-            writer.writerow([person['name'], person['book_and_case'], person['location']])
-        return response
+        csv_helper(templist)
     context = { 'people': templist, 'number': number }
     return render(request, 'namesapp/submit.html', context)
 
 def about(request):
     return render(request, 'namesapp/about.html')
 
-def return_csv(request):
-    # Create the HttpResponse object with the appropriate CSV header.
-    response = HttpResponse(
-        content_type='text/csv',
-        headers={'Content-Disposition': 'attachment; filename="all-names-list.csv"'},
-    )
-    writer = csv.writer(response)
-    people = NYCAlready.objects.all()
-    print(people)
-    for person in people:
-        writer.writerow([person.name, person.book_and_case, person.location])
-    return response
+def return_csv_all(request):
+    return csv_helper(NYCAlready.objects.all())
+
+def return_csv_recent(request):
+    return csv_helper(NYCCurrent.objects.all())
 
 def login_page(request):
     if request.method == 'POST':
