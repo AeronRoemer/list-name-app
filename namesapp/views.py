@@ -120,7 +120,7 @@ def search_names(data, input_number=50, current_line=data['current_line']):
 
         # increment name index if the loop finishes with 50 or less names
         print('runs each loop')
-        if current_line < 99:
+        if current_line < 250:
             current_line +=1
             print('added', current_line, names_list[current_line].strip())
         else:
