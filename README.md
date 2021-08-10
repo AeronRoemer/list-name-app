@@ -1,11 +1,10 @@
 Today: 
-1. Add Next 100 Names
+1. [x] Add Next 100 Names
 2. [x] Set Default for Radio Button
 3. [x] Beautify Loading Div
 
 Next:
 * Make page refresh on Reload
-* Add next 100 names
 -------- 
 * Deploy
 --------

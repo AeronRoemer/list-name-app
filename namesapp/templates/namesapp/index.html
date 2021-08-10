@@ -6,7 +6,7 @@
           <legend><h1 class="text-2xl font-bold mb-8">Name List Generation</h1></legend>
             <form action="{% url 'namesapp:get-names' %}" method="post" id="form">
                 {% csrf_token %}
-            {% if current_name %}<p class='text'>Starting from name: <strong>{{ current_name }}</strong><br /><strong>{{ current_line }} </strong> out of 100 possible names to search</p><br />{% endif %}
+            {% if current_name %}<p class='text'>Starting from name: <strong>{{ current_name }}</strong><br /><strong>{{ current_line }} </strong> out of 250 possible names to search</p><br />{% endif %}
             <div class="relative z-0 w-full mb-5">
               <select
                 name="number"
@@ -67,7 +67,7 @@
               type="submit"
               value="submit"
               onclick="loading()"
-              class="w-full bg-red-500 inline-flex items-center px-4 py-2 border border-transparent text-base leading-6 font-medium rounded-md text-white hover:bg-red-600 focus:border-red-700 active:bg-red-700 transition ease-in-out duration-150 cursor-not-allowed">
+              class="w-full bg-red-500 inline-flex items-center px-4 py-2 border border-transparent text-base leading-6 font-medium rounded-md text-white hover:bg-red-600 focus:border-red-700 active:bg-red-700 transition ease-in-out duration-150 cursor-pointer">
                 <span>Submit</span>
               </button>
             </span>
