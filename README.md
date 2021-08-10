@@ -1,12 +1,9 @@
 Today: 
-1. [x] Previous Searches
-    * [x] Show starting number
-    * [x] Display in View
-2. [x] Style CSV Button
-
+1. Add Next 100 Names
+2. [x] Set Default for Radio Button
+3. [x] Beautify Loading Div
 
 Next:
-* Beautify Loading Div
 * Make page refresh on Reload
 * Add next 100 names
 -------- 
@@ -134,3 +131,9 @@ Day 12:
     * [x] Add to DB On Search
     * [x] Delete When Search is Re-Run
     * [x] Offer CSV (?)
+
+Day 13:
+1. [x] Previous Searches
+    * [x] Show starting number
+    * [x] Display in View
+2. [x] Style CSV Button

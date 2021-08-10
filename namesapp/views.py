@@ -175,10 +175,9 @@ def recent_NYC(request):
 
 @login_required
 def get_names(request):
-    format = request.POST['radio']
     number = request.POST['number']
     templist = search_names(data, number)
-    if format == '1':
+    if request.POST['radio'] and (request.POST['radio'] == '1'):
         csv_helper(templist)
     context = { 'people': templist, 'number': number }
     return render(request, 'namesapp/submit.html', context)
