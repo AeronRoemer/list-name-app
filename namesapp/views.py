@@ -52,6 +52,8 @@ def check_and_add_name(person, templist):
     return templist    
 
 def search_names(data, input_number=50):
+    NYCAlready.objects.all().delete()
+    current_line = data['current_line']
     previous_line = data['current_line']
     number = int(input_number)
     templist = []

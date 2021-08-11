@@ -1,6 +1,9 @@
 Today: 
-* Prevent Back button use
-
+1. Prevent Back button use
+2. Deploy 
+    * Install NPM
+    * Update DB Info
+    https://www.digitalocean.com/community/tutorials/how-to-use-postgresql-with-your-django-application-on-ubuntu-16-04
 Next:
 
 -------- 
