@@ -1,5 +1,11 @@
 {% extends "namesapp/base.html" %} 
 {% block content %} 
+<SCRIPT type="text/javascript">
+	window.history.forward();
+	function noBack() { window.history.forward(); }
+</SCRIPT>
+<BODY onload="noBack();" 
+	onpageshow="if (event.persisted) noBack();" onunload="">
 {% if people %}
 <section class="container mx-auto p-6 font-mono">
     <div class="w-full mb-8 overflow-hidden rounded-lg shadow-lg">
@@ -34,8 +40,8 @@
       </div>
     </div>
   </section>
-
 {% else %}
     <p class="text-2xl">There's been an error.</p>
 {% endif %}
+
 {% endblock %}

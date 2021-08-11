@@ -1,17 +1,15 @@
 Today: 
-1. [x] Add Next 100 Names
-2. [x] Set Default for Radio Button
-3. [x] Beautify Loading Div
+* Prevent Back button use
 
 Next:
-* Make page refresh on Reload
+
 -------- 
 * Deploy
 --------
-* Clear DOM on back
+* Beautify Repo
 * Authentication Options
 * Testing
-* Learn more about PostCss and PurgeCSS
+* Learn more about PostCss and PurgeCSS outside of TW
 
 ### Deployment Concerns
 * Web Browser (Install & Install Binary for Selenium)
@@ -136,3 +134,8 @@ Day 13:
     * [x] Show starting number
     * [x] Display in View
 2. [x] Style CSV Button
+
+Day 14: 
+1. [x] Add Next 100 Names
+2. [x] Set Default for Radio Button
+3. [x] Beautify Loading Div

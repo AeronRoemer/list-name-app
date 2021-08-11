@@ -51,8 +51,8 @@ def check_and_add_name(person, templist):
         print('saved')
     return templist    
 
-def search_names(data, input_number=50, current_line=data['current_line']):
-    previous_line = current_line
+def search_names(data, input_number=50):
+    previous_line = data['current_line']
     number = int(input_number)
     templist = []
     # creates webdriver
@@ -94,7 +94,7 @@ def search_names(data, input_number=50, current_line=data['current_line']):
                         # skip if there's a discharge date
                         print('continued')
                         continue
-                elif len(templist) >= 50:
+                elif len(templist) >= number:
                     # exit condition for when the list is over 50 partway through a name
                     # if the list has data, return it. 
                     
@@ -127,6 +127,7 @@ def search_names(data, input_number=50, current_line=data['current_line']):
             current_line = 0
         
     with open("./namesapp/nyc-data/nyc-current-script-data.txt", "w") as json_file:
+        print('updated')
         data['current_line'] = current_line
         data['previous_line'] = previous_line
         json.dump(data, json_file)
