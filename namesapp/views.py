@@ -23,7 +23,7 @@ from time import sleep
 from random import random
 
 # binary file needed for using browser
-DRIVER_PATH = './driver/chromedriver'
+DRIVER_PATH = '/usr/lib/chromium-browser/chromedriver'
 
 # allows headless option where a Chrome window won't have to open
 options = Options()
@@ -52,7 +52,6 @@ def check_and_add_name(person, templist):
     return templist    
 
 def search_names(data, input_number=50):
-    NYCAlready.objects.all().delete()
     current_line = data['current_line']
     previous_line = data['current_line']
     number = int(input_number)
