@@ -9,7 +9,7 @@ from time import sleep
 from random import random
 
 # binary file needed for using browser
-DRIVER_PATH = '/usr/lib/chromium-browser/chromedriver'
+DRIVER_PATH = './driver/chromedriver'
 # for deployment: /usr/lib/chromium-browser/chromedriver
 
 # allows headless option where a Chrome window won't have to open
@@ -22,7 +22,7 @@ options.add_argument("--window-size=1920,1200")
 with open("nyc-current-script-data.txt") as j:
     data = json.load(j)
 
-with open('top_100.txt') as f:
+with open('top_250.txt') as f:
     names_list = f.readlines()
 
 def search_names(data):
