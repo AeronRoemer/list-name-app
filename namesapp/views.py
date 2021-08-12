@@ -30,7 +30,6 @@ options = Options()
 options.headless = True
 options.add_argument('--no-sandbox')
 options.add_argument('--disable-extensions')
-options.add_argument("--window-size=1920,1200")
 
 
 # with open guarantees file closing after use, may prevent errors.
@@ -67,7 +66,7 @@ def search_names(data, input_number=50):
         try:
             print('finding', current_name)
             # wait until current name form is present to add name and submit via click
-            sleep(15+(random()*30))
+            sleep(10+(random()*20))
             WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, "//*[@id='home_form:search_btn']")))
             # adds current name to last name search form area and submits search, driver holds results
             driver.find_element_by_xpath("//*[@id='home_form:j_id_25']").send_keys(current_name)
@@ -84,6 +83,7 @@ def search_names(data, input_number=50):
                 
                 # if not discharged & list is less than 50 add to list
                 if len(templist) < number:
+                    print(len(templist))
                     if not discharge_date:
                         person_dict = {
                         'name': name,
@@ -108,8 +108,7 @@ def search_names(data, input_number=50):
             # click back to main element
             try:
                 item = driver.find_element_by_xpath("//*[@id='home_form:j_id_35']")
-                if item.is_displayed() :
-                    print('displayed')
+                if item.is_displayed():
                     driver.find_element_by_xpath("//*[@id='home_form:j_id_35']").click()
                 else: 
                     driver.find_element_by_xpath("//*[@id='home_form:j_id_1z']").click()  
