@@ -28,6 +28,8 @@ DRIVER_PATH = '/usr/lib/chromium-browser/chromedriver'
 # allows headless option where a Chrome window won't have to open
 options = Options()
 options.headless = True
+options.add_argument('--no-sandbox')
+options.add_argument('--disable-extensions')
 options.add_argument("--window-size=1920,1200")
 
 

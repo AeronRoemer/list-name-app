@@ -1,9 +1,10 @@
 Today: 
 1. Prevent Back button use
 2. Deploy 
-    * Install NPM
-    * Update DB Info
+    * [x] Install NPM
+    * [x] Update DB Info
     https://www.digitalocean.com/community/tutorials/how-to-use-postgresql-with-your-django-application-on-ubuntu-16-04
+    * [x] used: sudo apt install chromium-chromedriver
 Next:
 
 -------- 
