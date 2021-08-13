@@ -58,7 +58,7 @@ def search_names(data, input_number=50):
     number = int(input_number)
     templist = []
     # creates webdriver
-    driver = webdriver.Chrome(options=options, executable_path=DRIVER_PATH, service_args=["--verbose", "--log-path=path-to-output-log-file"])
+    driver = webdriver.Chrome(options=options, executable_path=DRIVER_PATH, service_args=["--verbose", "--log-path=/var/log/"])
     driver.get("https://a073-ils-web.nyc.gov/inmatelookup/pages/home/home.jsf")
     NYCCurrent.objects.all().delete()
     while len(templist) < number:
