@@ -29,7 +29,7 @@ def search_names(data):
     templist = []
     # creates webdriver
     driver = webdriver.Chrome(options=options, executable_path=DRIVER_PATH)
-    driver.get("https://a073-ils-web.nyc.gov/inmatelookup/pages/home/home.jsf")
+    #driver.get("https://a073-ils-web.nyc.gov/inmatelookup/pages/home/home.jsf")
 
     while len(templist) < 50:
         current_line = data['current_line']
