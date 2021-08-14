@@ -59,7 +59,7 @@ def search_names(data, input_number=50):
     number = int(input_number)
     templist = []
     # creates webdriver
-    print(webdriver)
+    print(webdriver, options)
     driver = webdriver.Chrome(options=options, executable_path=DRIVER_PATH)
     print('after driver, before get')
     driver.get("https://a073-ils-web.nyc.gov/inmatelookup/pages/home/home.jsf")
