@@ -1,3 +1,66 @@
+# Name Finding App
+
+This Name Finder web application is custom made to find and return a list of information needed to contact currently incarcerated people. It uses a list of the top 100 most common last names in the US to perform the search. 
+
+It uses Django to organize the front and back ends, a Postgres Database, and Selenium to do the searching.
+
+The web scraper imitates a human clicking the search page on a DOC's inmate search. It scrolls through the page, looking for names and info, then clicks back to the search page and looks again. The script runs a browser window, but it's not visible to us as humans. There's a way of scraping that lets you see the browser window and what it's doing, but since it runs remotely on the server there's no reason for using that style.
+
+## Installation
+#### Requirements:
+* Install requirements via pip (the majority of dependencies)
+* Install requirements via NPM (for Tailwinds CSS)
+* Create a Postgres database 
+* Create a virutal environment
+
+#### Configuration:
+* Update Settings.py to reflect database login information
+* nyc-data contains information about the search process and location
+* Unfinished (deployment)
+
+#### Populate Database:
+* Use command ```python manage.py import``` to import a basic list of searched names
+* Use command ```python manage.py delete``` to empty the database
+
+
+
+## Main Technologies:
+1. Django
+    * Project Contains Settings
+    * App has templates, views and commands
+    * Full Stack (Back and Front End)
+    * Outputs CSVs, has a lot of other powers
+    1. Setup Features
+        * Built in Admin Panel
+        * Built in ORM
+        * Settings .py
+        * wsgi.py (used in Gunicorn deployment)
+        * testing (review)
+        How to: URLS and Routing
+    2. In app:
+        * Management/commands 
+            - Import
+            - Delete (custom like runserver - demonstrate)
+        * Templates (show)
+            - logic inside templates
+        * Views
+        * Protected Routes
+        * Built in Auth
+2. Selenium Web Scraping
+    * Demonstrate
+    * Testing & Scraping
+    * Interactive (Click, enter data)
+3. Tailwinds CSS
+    * Sucks
+    * 'Avoid CSS Drift'
+    * Small file
+    * Via NPM
+4. Deployed on VPS 
+    * Ubuntu
+    * Nginx
+    * Gunicorn
+
+
 Today: 
 1. Prevent Back button use
 2. Deploy 
@@ -5,10 +68,7 @@ Today:
     * [x] Update DB Info
     https://www.digitalocean.com/community/tutorials/how-to-use-postgresql-with-your-django-application-on-ubuntu-16-04
     * [x] used: sudo apt install chromium-chromedriver
-Next:
 
--------- 
-* Deploy
 --------
 * Beautify Repo
 * Authentication Options
