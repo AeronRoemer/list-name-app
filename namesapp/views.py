@@ -180,7 +180,6 @@ def recent_NYC(request):
     print(context)
     return render(request, 'namesapp/most-recent-ramNYC.html', context)
 
-@login_required
 def get_names(request):
     number = request.POST['number']
     templist = search_names(data, number)
