@@ -10,8 +10,9 @@ The web scraper imitates a human clicking the search page on a DOC's inmate sear
 #### Requirements:
 * Install requirements via pip (the majority of dependencies)
 * Install requirements via NPM (for Tailwinds CSS)
-* Create a Postgres database 
-* Create a virutal environment
+* Create a Postgres database CREATE DATABASE all_names;
+* Create a virutal environment python3 -m venv venv 
+source venv/bin/activate
 
 #### Configuration:
 * Update Settings.py to reflect database login information
