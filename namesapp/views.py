@@ -140,6 +140,35 @@ def search_names(data, input_number=50):
     driver.quit()
     return templist
 
+def debug(request):
+    messages = []
+    # creates webdriver
+    print(webdriver, options)
+    driver = webdriver.Chrome(options=options, executable_path=DRIVER_PATH)
+    messages.append('after driver, before get')
+    driver.get("https://a073-ils-web.nyc.gov/inmatelookup/pages/home/home.jsf")
+    messages.append('after get')
+
+    current_name = 'DIAZ'
+    try:
+        messages.append('finding DIAZ')
+        WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, "//*[@id='home_form:search_btn']")))
+        messages.append('Got search button') 
+        # adds current name to last name search form area and submits search, driver holds results
+        driver.find_element_by_xpath("//*[@id='home_form:j_id_25']").send_keys(current_name)
+        driver.find_element_by_xpath("//*[@id='home_form:search_btn']").click()
+        messages.append('submitted search')
+        # gets rows and cols of table returned from search
+        # 1 added to length to account for header, looks at all rows: /tbody/tr
+        rows = 1 +len(driver.find_elements_by_xpath("/html/body/div[1]/div/div/form/div[3]/div/table/tbody/tr"))
+        messages.append(f'returned {rows} rows')
+
+    except Exception as e: 
+            #print(driver.page_source)
+            messages.append(e)
+    context = { 'messages' : messages}
+    return render(request, 'namesapp/debug.html', messages)
+
 def csv_helper(people):
     # Create the HttpResponse object with the appropriate CSV header.
     response = HttpResponse(

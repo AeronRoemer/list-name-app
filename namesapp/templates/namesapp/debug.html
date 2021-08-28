@@ -1,0 +1,23 @@
+{% extends "namesapp/base.html" %} 
+{% block content %} 
+
+{% if messages %}
+<section class="container mx-auto p-6 font-mono">
+    <div class="w-full mb-8 overflow-hidden rounded-lg shadow-lg">
+    <h1 class="font-bold text-3xl">Debug Mesages:</h1>
+      <div class="w-full overflow-x-auto">
+          <tbody class="bg-white">
+            {% for msg in messages %}
+                    <p class="font-semibold text-black">
+                        {{ msg }}
+                    </p>
+            {% endfor %}
+          </tbody>
+      </div>
+    </div>
+  </section>
+{% else %}
+    <p class="text-2xl">There's been an error.</p>
+{% endif %}
+
+{% endblock %}
