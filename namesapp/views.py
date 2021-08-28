@@ -146,7 +146,7 @@ def debug(request):
     try:
         driver = webdriver.Chrome(options=options, executable_path=DRIVER_PATH)
         messages.append('after driver, before get')
- #   driver.get("https://a073-ils-web.nyc.gov/inmatelookup/pages/home/home.jsf")
+        driver.get("https://a073-ils-web.nyc.gov/inmatelookup/pages/home/home.jsf")
         messages.append('after get')
 
         current_name = 'DIAZ'
