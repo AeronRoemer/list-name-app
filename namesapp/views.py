@@ -23,8 +23,8 @@ from time import sleep
 from random import random
 
 # binary file needed for using browser
-#DRIVER_PATH = '/bin/chromedriver'
-DRIVER_PATH = '/snap/chromium/current/usr/lib/chromium-browser/chromedriver'
+DRIVER_PATH = '/bin/chromedriver'
+#DRIVER_PATH = '/snap/chromium/current/usr/lib/chromium-browser/chromedriver'
 # allows headless option where a Chrome window won't have to open
 options = Options()
 options.headless = True
