@@ -140,7 +140,7 @@ def search_names(data, input_number=50):
     driver.quit()
     return templist
 
-def debug(request):
+def debug_driver(request):
     messages = []
     # creates webdriver
     try:
