@@ -144,7 +144,7 @@ def debug(request):
     messages = []
     # creates webdriver
     print(webdriver, options)
-    driver = webdriver.Chrome(options=options, executable_path=DRIVER_PATH)
+ #   driver = webdriver.Chrome(options=options, executable_path=DRIVER_PATH)
     messages.append('after driver, before get')
  #   driver.get("https://a073-ils-web.nyc.gov/inmatelookup/pages/home/home.jsf")
     messages.append('after get')
@@ -160,8 +160,8 @@ def debug(request):
         messages.append('submitted search')
         # gets rows and cols of table returned from search
         # 1 added to length to account for header, looks at all rows: /tbody/tr
-        rows = 1 +len(driver.find_elements_by_xpath("/html/body/div[1]/div/div/form/div[3]/div/table/tbody/tr"))
-        messages.append(f'returned {rows} rows')
+    #    rows = 1 +len(driver.find_elements_by_xpath("/html/body/div[1]/div/div/form/div[3]/div/table/tbody/tr"))
+     #   messages.append(f'returned {rows} rows')
 
     except Exception as e: 
             #print(driver.page_source)
