@@ -143,14 +143,14 @@ def search_names(data, input_number=50):
 def debug(request):
     messages = []
     # creates webdriver
-    print(webdriver, options)
- #   driver = webdriver.Chrome(options=options, executable_path=DRIVER_PATH)
-    messages.append('after driver, before get')
- #   driver.get("https://a073-ils-web.nyc.gov/inmatelookup/pages/home/home.jsf")
-    messages.append('after get')
-
-    current_name = 'DIAZ'
     try:
+        driver = webdriver.Chrome(options=options, executable_path=DRIVER_PATH)
+        messages.append('after driver, before get')
+ #   driver.get("https://a073-ils-web.nyc.gov/inmatelookup/pages/home/home.jsf")
+        messages.append('after get')
+
+        current_name = 'DIAZ'
+    
         messages.append('finding DIAZ')
     #    WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, "//*[@id='home_form:search_btn']")))
         messages.append('Got search button') 
@@ -167,7 +167,7 @@ def debug(request):
             #print(driver.page_source)
             messages.append(e)
     context = { 'messages' : messages}
-    return render(request, 'namesapp/debug.html', messages)
+    return render(request, 'namesapp/debug.html', context)
 
 def csv_helper(people):
     # Create the HttpResponse object with the appropriate CSV header.
