@@ -18,7 +18,7 @@ Tailwind CSS is used as part of a lightweight, responsive visual experience. The
 
 | Tablet Login | Mobile Login |
 | --- | --- |
-| ![Login Screen as Seen On Table](/img/Tablet.png) | ![Login Screen as Seen On Mobile](/img/login-small.png) |
+| ![Login Screen as Seen On Table](/img/login-med.png) | ![Login Screen as Seen On Mobile](/img/login-small.png) |
 
 
 ### Main Pages
@@ -29,7 +29,7 @@ Tailwind CSS is used as part of a lightweight, responsive visual experience. The
 
 | Search Page |
 | -- |
-| ![A table with the names, case numbers and facilities of incarcerated people. First names and case numbers are hidden for privacy reasons.](/img/searched-page.png .png) |
+| ![A table with the names, case numbers and facilities of incarcerated people. First names and case numbers are hidden for privacy reasons.](/img/searched-page.png) |
 
 ### Deployment 
 
