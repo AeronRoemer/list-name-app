@@ -1,145 +1,84 @@
-Today: 
-1. Prevent Back button use
-2. Deploy 
-    * [x] Install NPM
-    * [x] Update DB Info
-    https://www.digitalocean.com/community/tutorials/how-to-use-postgresql-with-your-django-application-on-ubuntu-16-04
-    * [x] used: sudo apt install chromium-chromedriver
-Next:
 
--------- 
-* Deploy
---------
-* Beautify Repo
-* Authentication Options
-* Testing
-* Learn more about PostCss and PurgeCSS outside of TW
+# Names App
 
-### Deployment Concerns
-* Web Browser (Install & Install Binary for Selenium)
-* Tailwind-re setup: NPM
+Full stack web scraper/data managment application built on Django/Python. It finds and return a list of information needed to contact currently incarcerated people. It uses a list of the top 250 most common last names in the US to perform the search. It helps users manage data by tracking previously searched names, making them available as HTML and as downloadable CSVs. Custom Django commands are availabel as well, allowing the developer initializing the app to load in a previously existing CSV. 
+## Concepts Demonstrated
 
-### Prior: 
-Day 1:
-1. [X] Format Name List
-2. [X] Selenium Form Entry
-3. [X] Handle Data from Single Name
-    * [X] Sort Page Source Data 
-    * [X] Exception Handling
-    * [X] Upgrade - Wait until Loaded
-4. [X] Save Data to CSV
+The main technologies and concepts used in this project:
 
-Day 2:
-1. Loop Handle Data
-    * conditional - new people, other sorting
-    * [x] API (No Good)
-    * [X] limit list to 50 and track last searched name
-    * [X] Handle Error (Related to Looping?)
-2. [X] Consider Deployment
-3. [X] Django Basics (installed project and app, loading one page)
-4. [X] Consider DB
-5. [x] .env file (problem was it was different for Django)
+* Django
+* Python
+* Selenium 
+* Tailwinds
+* Postgres 
 
-Day 3: 
-1. [X] Investigate Connection Methods
-    * [X] Change Config to PSQL Defaults
-2. [X] Create PSQL DB & Model
-    * To see SQL used in migration in shell type: python manage.py sqlmigrate namesapp 0001
-    * To check for problems: python manage.py check
-3. [X] Handle Already Contacted Names
-    * [X] Get List
-    * [X] Sort Top 100
-4. [X] Connect DB
-    * [x] Show data in view
+### Responsive Design
 
-Day 4: 
-1. [X] Page 3 of Tutorial
-2. [X] View with Input
-3. [x] Add old names to DB. Best way ? Create a command:
-    * https://adityakedawat.medium.com/importing-csv-file-into-django-models-using-django-management-command-716eda305e61
-4. [X] Page 4 of Tutorial
+Tailwind CSS is used as part of a lightweight, responsive visual experience. 
 
-Day 5: 
-1. [x] Tests Tutorial 
-2. [x] 'with open'
-3. [x] Keep track of current line (JSON)
-    * Bug: If there's over 50, it won't advance. Will be fixed when DB is connected and checks names in list against names in DB
-4. [x] Investigate Async for main.py
-5. [x] Static Files Tutorial
-6. [x] Django Page that adds One Person
-7. [x] Test Main.py in Views
+| Desktop |
+| -- |
+| ![React Flickr App as seen on desktop](/img/Desktop.png) |
 
-Day 6:
-1. [x] Handle Data
-    * [x] Check new names against DB names
-    * [x] Send to DB
-2. [x] book_and_case number as pk
-3. [x] Get 50, Check & Display
-4. [x] Read about deployment
-5. [x] Setup env on VPS - installed and server running but didn't configure NginX
-    * [x] pull from github
-    * [x] postgres + DBs
-    * [x] migrations
-    * [x] install dependencies
-        * [x] pykerberos error (installed things pykerberos was dependent on)
+| Tablet| Mobile |
+| --- | --- |
+| ![React Flickr App as seen on Tablet](/img/Tablet.png) | ![React Flickr App as seen on Mobile](/img/Mobile.png) |
 
-Day 7:
-1. [x] Pass list data to next view
-2. [x] Create header for view
-3. [x] Create loading functionality for view
-    * [x] dots
-4. Beautify Pages
-    * Install Tailwind CSS
-5. [x] Investigate JS/React/Etc
-    * Advantages of the server-first architecture for this project: With a client first (using React, Vue etc) Django's built-in support for templates, forms, and other front-end goodies are basically thrown out the window. Current setup leveraged built in Django views and templates, forms, the built-in login interface, etc.
-    * graceful degreadation? (works without JS but is nicer with JS)
 
-Day 8:
-1. [x] Install Tailwind CSS
-    * [x] Manage NPM install & build script
-2. [x] Investigate & Fix Error in Scraping
-3. [x] Accidentally Delete a Commit and have to re-do a bunch of stuff
+### React Router
 
-Day 9: 
-1. [x] Finalize Auth
-    * [x] Add user via admin page
-    * [x] Login-Logout Working
+Used Routes, Links, and NavLinks to create navigation around the site. 
+* The main App.js employs a Switch and Routes to navigate through the content. 
+* The top tag routes are created by using params, and change along with the tags. 
+* The Search Bar redirects the user to a /search/ URL on click.
+* 404 route displays for nonexistent routes.
 
-Day 10:
-1. [x] Get redirects/links working in header
-2. [x] Demand Login to View Pages/Redirect 
-3. [x] Return List, CSV of All_Names
-4. Improve Look of Home Page (links, etc)
-    * [x] Display, Move Links
-    * [x] Highlight/Hide Active Links
-    * Tailwind for Header
+In the future, I would like to add routes based on location.search data and query strings. Some commented out code is at the bottom of App.js and SearchForm.js. Ideally, the site and results can be accessed directly via a URL ending in a query string. 
 
-Day 11: 
-1. [x] Style Front Page
-2. [x] Finish Styling Header
-3. [x] Style Names List
-4. [x] Style Login Screen
-5. [x] Skeleton Next Pages
-* How to Add Custom font to Tailwind (later)
-Good styling resource/s: https://tailblocks.cc/
-https://tailwindcomponents.com
+## React Router
 
-Day 12:
-1. [x] Style About Page 
-2. [x] Handle Bad Logins
-3. [x] Return View Options
-4. [x] Keep Last Week's Searches
-    * [x] Add to DB On Search
-    * [x] Delete When Search is Re-Run
-    * [x] Offer CSV (?)
+Used Routes, Links, and NavLinks to create navigation around the site. 
+* The main App.js employs a Switch and Routes to navigate through the content. 
+* The top tag routes are created by using params, and change along with the tags. See NavBar.js and App.js to check this out.  
+* The Search Bar redirects the user to a /search/ URL on click.
+* 404 route displays for nonexistent routes.
 
-Day 13:
-1. [x] Previous Searches
-    * [x] Show starting number
-    * [x] Display in View
-2. [x] Style CSV Button
+In the future, I would like to add routes based on location.search data and query strings. Some commented out code is at the bottom of App.js and SearchForm.js. Ideally, the site and results can be accessed directly via a URL ending in a query string. 
 
-Day 14: 
-1. [x] Add Next 100 Names
-2. [x] Set Default for Radio Button
-3. [x] Beautify Loading Div
+## No Github Pages?
+
+That's right - the project depends on a config.js file that's ignored in .gitignore. It contains my flickr API key, which I don't want to give out publically. 
+
+If you want to run the project, you can download it and supply your own key. Config.js just needs to export the API key, which is imported on line 10 of App.js
+
+Just use the following scripts:
+
+### Available Scripts
+
+In the project directory, you can run:
+
+#### `npm start`
+
+Runs the app in the development mode.<br />
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+The page will reload if you make edits.<br />
+You will also see any lint errors in the console.
+
+#### `npm test`
+
+Launches the test runner in the interactive watch mode.<br />
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+
+#### `npm run build`
+
+Builds the app for production to the `build` folder.<br />
+It correctly bundles React in production mode and optimizes the build for the best performance.
+
+The build is minified and the filenames include the hashes.<br />
+Your app is ready to be deployed!
+
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+### Licsence 
+MIT
